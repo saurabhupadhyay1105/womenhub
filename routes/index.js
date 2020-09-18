@@ -6,4 +6,15 @@ router.get('/', function(req, res, next) {
   res.render('Home/index');
 });
 
+
+router.get('/opportunities', function(req, res, next) {
+  res.render('Home/opportunities');
+});
+
+
+router.get('/blogs', function(req, res, next) {
+  res.render('Home/opportunities');
+});
+
+
 module.exports = router;
