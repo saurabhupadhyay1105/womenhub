@@ -1,30 +1,26 @@
 const mongoose = require("mongoose");
 
-var userSchema = new mongoose.Schema({
-  username: {
-    type: String,
-    required: true,
-  },
-  name: {
+var oppSchema = new mongoose.Schema({
+  jobtitle: {
     type: String,
     required: true,
   },
 
-  password: {
+  type: {
     type: String,
     required: true,
   },
 
-  mobileno: {
+  description: {
     type: String,
     required: true,
   },
 
-  email: {
+  organisation: {
     type: String,
   },
 
   date: { type: Date, default: Date.now },
 });
-var userModel = mongoose.model("User", userSchema);
-module.exports = userModel;
+var oppModel = mongoose.model("Opp", oppSchema);
+module.exports = oppModel;
