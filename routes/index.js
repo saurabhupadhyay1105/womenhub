@@ -6,6 +6,18 @@ var contestModule = require("../models/contests");
 var router = express.Router();
 var session = require("express-session");
 var bcrypt = require("bcryptjs");
+var path = require("path");
+var multer = require("multer");
+var Storage = multer.diskStorage({
+  destination: "./public/blogs/",
+  filename: (req, file, cb) => {
+    console.log(path.extname(file.originalname));
+    cb(null, file.fieldname + "_" + Date.now + path.extname(file.originalname));
+  },
+});
+var upload = multer({
+  storage: Storage,
+}).single("file");
 
 /* GET home page. */
 router.get("/", function (req, res, next) {
@@ -137,29 +149,37 @@ router.get("/logout", function (req, res, next) {
 router.get("/blogs", function (req, res, next) {
   blogModule.find({}).exec((err, data) => {
     if (err) throw err;
-    console.log(data);
-    res.render("Home/blogs", { blogs: data });
+    // console.log(data);
+    if (req.session.uniqueId) {
+      var username = req.session.user.username;
+      // console.log(username);
+      res.render("Home/blogs", { blogs: data, isloggedin: username });
+    } else {
+      res.render("Home/blogs", { blogs: data, isloggedin: "login/register" });
+    }
   });
 });
 
 //Get a Blog
-router.get("/blogs/:id", (req, res, next) => {
+router.get("/blog/:id", (req, res, next) => {
   var id = req.params.id;
   var blogg = blogModule.find({ _id: id });
   blogg.exec((err, data) => {
-    console.log(data);
+    // console.log(data);
     res.render("Home/blog", { blog: data[0] });
   });
 });
 
 // Create a new blog
-router.post("/createblog", (req, res, next) => {
+router.post("/createblog", upload, (req, res, next) => {
   var { title, body } = req.body;
+  var image = req.file.filename;
   var username = req.session.user.username;
-  var blog = new blogModule({ title, body, username });
+  var blog = new blogModule({ title, body, username, image });
+  // console.log(blog);
   blog.save((err, exec) => {
     if (err) throw err;
-    res.render("Home/blogs");
+    res.redirect("/blogs");
   });
 });
 
