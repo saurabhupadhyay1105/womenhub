@@ -15,23 +15,24 @@
     <% if(blogs.length>0){ blogs.forEach(blog=>{ %>
     <div class="row justify-content-center gapping">
         <div class="col-sm-8 ">
-            
+
             <div class="card card-cus">
-                <a href="/blogs/<%=blog._id %>">
-                <div class="card-body">
-                    <h4><%= blog.title %></h4>
-                    <p class="card-text blocklines ">
-                        <%- blog.body %>
-                    </p>
-                    <input type="hidden" name="id" value="<%= blog._id %>" />
-                    <div class="like ">
-                        <h6 class="text-muted post gapping">posted by- <%=blog.username %></h6>
-                        <i class="fa fa-heart likeicon gapping" aria-hidden="true">5</i>
+                <a href="/blog/<%=blog._id %>">
+                    <div class="card-body">
+                        <h4><%= blog.title %></h4>
+                        <p class="card-text blocklines ">
+                            <%- blog.body %>
+                        </p>
+                        <img src="./public/blogs/<%= blog.image %>" /> <input type="hidden" name="id"
+                            value="<%= blog._id %>" />
+                        <div class="like ">
+                            <h6 class="text-muted post gapping">posted by- <%=blog.username %></h6>
+                            <i class="fa fa-heart likeicon gapping" aria-hidden="true">5</i>
+                        </div>
                     </div>
-                </div>
-            </a>
+                </a>
             </div>
-            
+
         </div>
     </div>
     <% })} %>
