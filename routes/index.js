@@ -54,7 +54,8 @@ router.post("/checkusername", (req, res, next) => {
 
 
 router.post("/login", function (req, res, next) {
-  var mobileno = req.body.mobileno;
+  var mobileno = req.body.email;
+  var password = req.body.password;
   const re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
   if (re.test(mobileno)) {
     var checkuser = userModule.findOne({ email: mobileno });
@@ -69,9 +70,10 @@ router.post("/login", function (req, res, next) {
       session = req.session;
       if (bcrypt.compareSync(password, getpassword)) {
         session.uniqueId = mobileno;
-        // console.log(session.uniqueId);
-
-        res.redirect("/redirect");
+        session.user = data;
+        console.log(session.user);
+        // res.redirect("/redirect");
+        res.send("logged in")
       } else {
         res.render("Home/login", {
           message: "Invalid username and password",
@@ -108,13 +110,17 @@ router.get("/blogs", function (req, res, next) {
 
 
 //Get a Blog
-
+router.get("/blogs/:id", (req, res, next) => {
+  var id = req.params.id;
+  var blog = blogModule.find({ _id: id });
+  res.render("Home/blog", { blog: blog });
+})
 
 // Create a new blog
-router.post("/createblog", (req, res, next) => {
+router.post("/createblog/", (req, res, next) => {
   var { title, content } = req.body;
-  username="utkarsh17verma";
-  var blog = new blogModule({ title, content, username});
+  username = "utkarsh17verma";
+  var blog = new blogModule({ title, content, username });
   blog.save((err, exec) => {
     if (err) throw err;
     res.send("blogcreated");
@@ -123,7 +129,13 @@ router.post("/createblog", (req, res, next) => {
 
 
 //Delete a blog
+router.get("/opportunities/delete/:id", (req, res, next) => {
+  var id = req.params.id;
+  blogModule.findByIdAndDelete(id).exec((err, data) => {
 
+    res.render("Home/index");
+  });
+})
 
 //Get Jobs/Internships page
 router.get("/opportunities", (req, res, next) => {
@@ -132,13 +144,18 @@ router.get("/opportunities", (req, res, next) => {
 
 
 //Get a Job/Internship page
+router.get("/opportunities/:id", (req, res, next) => {
+  var id = req.params.id;
+  var opportunity = jobModule.findById(id);
+  res.render("Home/opportunity", { opportunity: opportunity })
+})
 
 
 // Create a new JOB/INTERNSHIP
 router.post("/createjob", (req, res, next) => {
   var { title, type, description, organisation, applylink, category } = req.body;
-  username="utkarsh17verma";
-  var job = new jobModule({ title, type, description, organisation, applylink, category, username});
+  username = "utkarsh17verma";
+  var job = new jobModule({ title, type, description, organisation, applylink, category, username });
   job.save((err, exec) => {
     if (err) throw err;
     res.send("jobcreated");
@@ -147,7 +164,13 @@ router.post("/createjob", (req, res, next) => {
 
 
 // Delete a JOB/Internship
+router.get("/opportunities/delete/:id", (req, res, next) => {
+  var id = req.params.id;
+  jobModule.findByIdAndDelete(id).exec((err, data) => {
 
+    res.render("Home/index");
+  });
+})
 
 // Get all contests
 router.get("/contests", (req, res, next) => {
@@ -156,13 +179,17 @@ router.get("/contests", (req, res, next) => {
 
 
 // Get a contest
-
+router.get("/contests/:id", (req, res, next) => {
+  var id = req.params.id;
+  var contest = contestModule.findById(id);
+  res.render("Home/contest", { contest: contest })
+})
 
 // Create a new Contest
 router.post("/createcontest", (req, res, next) => {
   var { title, summary, applylink } = req.body;
-  username="utkarsh17verma";
-  var contest = new contestModule({ title, summary, applylink, username});
+  username = "utkarsh17verma";
+  var contest = new contestModule({ title, summary, applylink, username });
   contest.save((err, exec) => {
     if (err) throw err;
     res.send("contestcreated");
@@ -171,6 +198,12 @@ router.post("/createcontest", (req, res, next) => {
 
 
 //Delete a contest
+router.get("/opportunities/delete/:id", (req, res, next) => {
+  var id = req.params.id;
+  contestModule.findByIdAndDelete(id).exec((err, data) => {
 
+    res.render("Home/index");
+  });
+})
 
 module.exports = router;
