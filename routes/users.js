@@ -7,6 +7,7 @@ var userModule = require("../models/users");
 router.get("/dashboard", (req, res, next) => {
   if (req.session.uniqueId) {
     var username = req.session.user.username;
+
     var user = userModule.findOne({ username: username });
     user.exec((err, data) => {
       if (err) throw err;
@@ -14,7 +15,7 @@ router.get("/dashboard", (req, res, next) => {
       res.render("User/index", { username: username, user: data });
     });
   } else {
-    res.render("Home/login");
+    res.redirect("/login");
   }
 });
 
@@ -25,7 +26,7 @@ router.get("/blogs", (req, res, next) => {
 
     res.render("User/blogs", { username: username });
   } else {
-    res.render("Home/login");
+    res.redirect("/login");
   }
 });
 
@@ -46,7 +47,7 @@ router.get("/job", (req, res, next) => {
     var username = req.session.user.username;
     res.render("User/jobs", { username: username });
   } else {
-    res.render("Home/login");
+    res.redirect("Home/login");
   }
 });
 
@@ -57,7 +58,7 @@ router.get("/contest", (req, res, next) => {
 
     res.render("User/contest", { username: username });
   } else {
-    res.render("Home/login");
+    res.redirect("Home/login");
   }
 });
 

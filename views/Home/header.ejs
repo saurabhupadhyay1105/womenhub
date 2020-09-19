@@ -58,8 +58,38 @@
       <li><a href="/blogs">Get Inspired</a></li>
       <li><a href="/opportunities">Opportunities</a></li>
       <li><a href="/contests" class="disabled">Contests</a></li>
+      <% if(isloggedin=="login/register") { %>
       <li><a href="" class="btn btn-default btn-rounded my-3" data-toggle="modal"
           data-target="#modalLRForm">LogIn/Register</a></li>
+      <%} else {%>
+      <li class="nav-item dropdown no-arrow">
+
+        <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">
+          <span
+            class="mr-2 d-none d-lg-inline text-gray-600 small"><% if(isloggedin.length >0) {%><%=isloggedin %><%} else { %>
+            login <% }%></span>
+
+          <!-- <img class="img-profile rounded-circle" src="/public/Images/default_profile.png"> -->
+
+        </a>
+
+        <div class="dropdown-menu dropdown-menu-right shadow " aria-labelledby="userDropdown">
+          <a class="dropdown-item" href="/users/dashboard">
+
+            <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+            dashboard
+          </a>
+
+
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="/logout">
+            <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 "></i>
+            Logout
+          </a>
+        </div>
+      </li>
+      <%}%>
     </ul>
 
 
@@ -84,6 +114,7 @@
         <div class="modal-c-tabs">
 
           <!-- Nav tabs -->
+
           <ul class="nav nav-tabs md-tabs tabs-2 light-blue darken-3" role="tablist">
             <li class="nav-item">
               <a class="nav-link active" data-toggle="tab" href="#panel7" role="tab">Login</a>
