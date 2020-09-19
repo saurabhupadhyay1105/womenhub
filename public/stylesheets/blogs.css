@@ -68,3 +68,7 @@
 .blog-wrapper .card-title{
   font-family: 'Roboto', serif;
 }
+
+.blog-wrapper .card-text{
+  text-align: justify;
+}
