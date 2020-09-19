@@ -1,4 +1,5 @@
 var express = require("express");
+var express = require("express");
 var userModule = require("../models/users");
 var blogModule = require("../models/blogs");
 var jobModule = require("../models/jobs");
@@ -193,16 +194,39 @@ router.get("/opportunities/delete/:id", (req, res, next) => {
 
 //Get Jobs/Internships page
 router.get("/opportunities", (req, res, next) => {
-  res.render("Home/opportunities");
+  var opps = jobModule.find({});
+  opps.exec((err, data) => {
+    if (err) throw err;
+    console.log(data);
+    res.render("Home/opportunities", { jobs: data });
+  });
+});
+router.get("/jobs/:id", (req, res, next) => {
+  var id = req.params.id;
+  var jobtype;
+  if (id == "01") {
+    jobtype = "Software Engineering";
+  } else if (id == "02") {
+    jobtype = "Digital Marekting";
+  } else if (id == "03") {
+    jobtype = "Human Resources";
+  }
+  var opps = jobModule.find({ category: jobtype });
+  opps.exec((err, data) => {
+    if (err) throw err;
+    console.log(data);
+    res.render("Home/opportunities", { jobs: data });
+  });
 });
 
 //Get a Job/Internship page
-router.get("/opportunities/:id", (req, res, next) => {
+router.get("/opportunity/:id", (req, res, next) => {
   var id = req.params.id;
   var opp = jobModule.findById(id);
   opp.exec((err, data) => {
     if (err) throw err;
-    res.render("Home/opportunity", { opportunity: data[0] });
+    console.log(data);
+    res.render("Home/opportunity", { opportunity: data });
   });
 });
 
@@ -229,7 +253,7 @@ router.post("/createjob", (req, res, next) => {
   });
   job.save((err, exec) => {
     if (err) throw err;
-    res.send("jobcreated");
+    res.redirect("/opportunities");
   });
 });
 
