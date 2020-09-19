@@ -1,4 +1,5 @@
 <%- include header.ejs %>
+
 <head>
     <link rel="stylesheet" href="/public/stylesheets/blog.css">
 </head>
@@ -8,12 +9,16 @@
             <div class="card">
                 <div class="card-body">
                     <div class="card-title">
-                        <h3>An inspiring story</h3>
+
+                        <h3><%= blog.title %></h3>
+
                     </div>
                     <div class="card-subtitle">
                         <a class="btn" href="#">
                             <h5>
-                                Anand Kumar
+
+                               <%= blog.username%>
+
                             </h5>
                             <h5>
                                 22aug, 2019
@@ -27,24 +32,27 @@
                     </div>
                     <div class="card-text">
                         <p>
-                            It feels so good when we see people around us empowering women are found.
-                            many girls are killed or burnet alive because of dowry system in india. let us come 
-                            forward to resolve this issue It feels so good when we see people around us empowering women are found.
-                            many girls are killed or burnet alive because of dowry system in india. let us come 
-                            forward to resolve this issue It feels so good when we see people around us empowering women are found.
-                            many girls are killed or burnet alive because of dowry system in india. let us come 
-                            forward to resolve this issue It feels so good when we see people around us empowering women are found.
-                            many girls are killed or burnet alive because of dowry system in india. let us come 
-                            forward to resolve this issue 
+
+                        <%- blog.body %>
+
+                         
+
                         </p>
                     </div>
 
                     <i class="fa fa-share" aria-hidden="true"></i>
-                    <i class="far fa-heart buttom-icon" aria-hidden="true">5</i>
+
+                    <i class="far fa-heart buttom-icon" aria-hidden="true"><%= blog.likes %></i>
+
                     
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+
 <%- include footer.ejs %>
+
+<%- include footer.ejs %>
+

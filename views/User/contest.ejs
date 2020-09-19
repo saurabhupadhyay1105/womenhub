@@ -1,4 +1,5 @@
 <%- include header.ejs %>
+<script src="https://cdn.ckeditor.com/4.15.0/standard/ckeditor.js"></script>
 
 <div class="container mt-2 mb-5">
     <div class="row justify-content-center">
@@ -11,15 +12,16 @@
                     <form action="/createcontest" method="POST">
                         <div class="mb-3">
                             <label for="title" class="form-label">Title</label>
-                            <input type="text" class="form-control" id="title" name="title" required >
+                            <input type="text" class="form-control" id="title" name="title" required>
                         </div>
                         <div class="mb-3">
                             <label for="description" class="form-label">Summary</label>
-                            <textarea type="text" class="form-control" id="summary" name="summary" rows="15" required ></textarea>
+                            <textarea type="text" class="form-control" id="summary" name="summary" rows="15"
+                                required></textarea>
                         </div>
                         <div class="mb-3">
                             <label for="applylink" class="form-label">Apply Link</label>
-                            <input type="text" class="form-control" id="applylink" name="applylink" required >
+                            <input type="text" class="form-control" id="applylink" name="applylink" required>
                         </div>
                         <label class="checkbox-inline">
                             <input type="checkbox" value="" required> I have verified the Contest.
@@ -33,5 +35,6 @@
         </div>
     </div>
 </div>
+<script>CKEDITOR.replace('summary');</script>
 
 <%- include footer.ejs %>
