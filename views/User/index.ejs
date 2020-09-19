@@ -1,6 +1,38 @@
 <%- include header.ejs %>
 
+<div class="container mt-2 mb-5">
+    <div class="row justify-content-center">
+        <div class="col-md-10">
+            <div class="card">
+                <div class="card-header">
+                    <h4>Post a new Contest/Challenge</h4>
+                </div>
+                <div class="card-body">
+                    <form action="/createcontest" method="POST">
+                        <div class="mb-3">
+                            <label for="title" class="form-label">Title</label>
+                            <input type="text" class="form-control" id="title" name="title" required >
+                        </div>
+                        <div class="mb-3">
+                            <label for="description" class="form-label">Summary</label>
+                            <textarea type="text" class="form-control" id="summary" name="summary" rows="15" required ></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label for="applylink" class="form-label">Apply Link</label>
+                            <input type="text" class="form-control" id="applylink" name="applylink" required >
+                        </div>
+                        <label class="checkbox-inline">
+                            <input type="checkbox" value="" required> I have verified the Contest.
+                        </label>
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-primary ">Submit</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
-Hello world
 
 <%- include footer.ejs %>
