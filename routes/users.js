@@ -1,12 +1,18 @@
 var express = require("express");
 var router = express.Router();
 var blogModule = require("../models/blogs");
+var userModule = require("../models/users");
 
 //GET user dashboard
 router.get("/dashboard", (req, res, next) => {
   if (req.session.uniqueId) {
     var username = req.session.user.username;
-    res.render("User/index", { username: username });
+    var user = userModule.findOne({ username: username });
+    user.exec((err, data) => {
+      if (err) throw err;
+      console.log(data);
+      res.render("User/index", { username: username, user: data });
+    });
   } else {
     res.render("Home/login");
   }
