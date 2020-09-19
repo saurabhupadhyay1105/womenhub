@@ -1,5 +1,5 @@
 <%- include header.ejs %>
-
+<script src="https://cdn.ckeditor.com/4.15.0/standard/ckeditor.js"></script>
 <div class="container mt-2 mb-5">
     <div class="row justify-content-center">
         <div class="col-md-10">
@@ -11,11 +11,12 @@
                     <form action="/createblog" method="POST">
                         <div class="mb-3">
                             <label for="title" class="form-label">Title</label>
-                            <input type="text" class="form-control" id="title" name="title" required >
+                            <input type="text" class="form-control" id="title" name="title" required>
                         </div>
                         <div class="mb-3">
                             <label for="body" class="form-label">Body</label>
-                            <textarea type="text" class="form-control" id="body" name="body" rows="15" required ></textarea>
+                            <textarea type="text" class="form-control" id="body" name="body" rows="15"
+                                required></textarea>
                         </div>
                         <label class="checkbox-inline">
                             <input type="checkbox" value="" required> I have verified my content.
@@ -29,5 +30,5 @@
         </div>
     </div>
 </div>
-
+<script>CKEDITOR.replace('body');</script>
 <%- include footer.ejs %>

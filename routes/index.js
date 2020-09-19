@@ -7,7 +7,6 @@ var router = express.Router();
 var session = require("express-session");
 var bcrypt = require("bcryptjs");
 
-
 /* GET home page. */
 router.get("/", function (req, res, next) {
   res.render("Home/index");
@@ -15,9 +14,8 @@ router.get("/", function (req, res, next) {
 
 //Get login Page
 router.get("/login", (req, res, next) => {
-  res.render('Home/login');
+  res.render("Home/login");
 });
-
 
 //post register
 router.post("/register", (req, res, next) => {
@@ -52,7 +50,6 @@ router.post("/checkusername", (req, res, next) => {
   });
 });
 
-
 router.post("/login", function (req, res, next) {
   var mobileno = req.body.email;
   var password = req.body.password;
@@ -73,7 +70,7 @@ router.post("/login", function (req, res, next) {
         session.user = data;
         console.log(session.user);
         // res.redirect("/redirect");
-        res.send("logged in")
+        res.send("logged in");
       } else {
         res.render("Home/login", {
           message: "Invalid username and password",
@@ -101,94 +98,121 @@ router.get("/redirect", (req, res) => {
     });
   }
 });
-
+router.get("/logout", function (req, res, next) {
+  req.session.destroy((err) => {
+    // console.log(err);
+    res.redirect("/login");
+  });
+});
 
 // Get Blogs page
 router.get("/blogs", function (req, res, next) {
-  res.render("Home/blogs");
+  blogModule.find({}).exec((err, data) => {
+    if (err) throw err;
+    console.log(data);
+    res.render("Home/blogs", { blogs: data });
+  });
 });
-
 
 //Get a Blog
 router.get("/blogs/:id", (req, res, next) => {
   var id = req.params.id;
-  var blog = blogModule.find({ _id: id });
-  res.render("Home/blog", { blog: blog });
-})
+  var blogg = blogModule.find({ _id: id });
+  blogg.exec((err, data) => {
+    console.log(data);
+    res.render("Home/blog", { blog: data[0] });
+  });
+});
 
 // Create a new blog
 router.post("/createblog", (req, res, next) => {
   var { title, body } = req.body;
-  username = "utkarsh17verma";
+  var username = req.session.user.username;
   var blog = new blogModule({ title, body, username });
   blog.save((err, exec) => {
     if (err) throw err;
-    res.send("blogcreated");
+    res.render("Home/blogs");
   });
 });
-
 
 //Delete a blog
 router.get("/opportunities/delete/:id", (req, res, next) => {
   var id = req.params.id;
   blogModule.findByIdAndDelete(id).exec((err, data) => {
-
     res.render("Home/index");
   });
-})
+});
 
 //Get Jobs/Internships page
 router.get("/opportunities", (req, res, next) => {
   res.render("Home/opportunities");
 });
 
-
 //Get a Job/Internship page
 router.get("/opportunities/:id", (req, res, next) => {
   var id = req.params.id;
-  var opportunity = jobModule.findById(id);
-  res.render("Home/opportunity", { opportunity: opportunity })
-})
-
+  var opp = jobModule.findById(id);
+  opp.exec((err, data) => {
+    if (err) throw err;
+    res.render("Home/opportunity", { opportunity: data[0] });
+  });
+});
 
 // Create a new JOB/INTERNSHIP
 router.post("/createjob", (req, res, next) => {
-  var { title, type, description, organisation, applylink, category } = req.body;
-  username = "utkarsh17verma";
-  var job = new jobModule({ title, type, description, organisation, applylink, category, username });
+  var {
+    title,
+    type,
+    description,
+    organisation,
+    applylink,
+    category,
+  } = req.body;
+  var username = req.session.user.username;
+
+  var job = new jobModule({
+    title,
+    type,
+    description,
+    organisation,
+    applylink,
+    category,
+    username,
+  });
   job.save((err, exec) => {
     if (err) throw err;
     res.send("jobcreated");
   });
 });
 
-
 // Delete a JOB/Internship
 router.get("/opportunities/delete/:id", (req, res, next) => {
   var id = req.params.id;
   jobModule.findByIdAndDelete(id).exec((err, data) => {
-
     res.render("Home/index");
   });
-})
+});
 
 // Get all contests
 router.get("/contests", (req, res, next) => {
   res.render("Home/contests");
 });
 
-
 // Get a contest
 router.get("/contests/:id", (req, res, next) => {
   var id = req.params.id;
-  var contest = contestModule.findById(id);
-  res.render("Home/contest", { contest: contest })
-})
+  var cont = contestModule.findById(id);
+  cont.exec((err, data) => {
+    if (err) throw err;
+    res.render("Home/contest", { contest: data[0] });
+  });
+});
 
 // Create a new Contest
 router.post("/createcontest", (req, res, next) => {
   var { title, summary, applylink } = req.body;
-  username = "utkarsh17verma";
+  var username = req.session.user.username;
+
   var contest = new contestModule({ title, summary, applylink, username });
   contest.save((err, exec) => {
     if (err) throw err;
@@ -196,14 +220,12 @@ router.post("/createcontest", (req, res, next) => {
   });
 });
 
-
 //Delete a contest
 router.get("/opportunities/delete/:id", (req, res, next) => {
   var id = req.params.id;
   contestModule.findByIdAndDelete(id).exec((err, data) => {
-
     res.render("Home/index");
   });
-})
+});
 
 module.exports = router;
