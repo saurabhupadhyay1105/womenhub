@@ -163,11 +163,15 @@ router.get("/blogs", function (req, res, next) {
 
 //Get a Blog
 router.get("/blog/:id", (req, res, next) => {
+  var opps = jobModule.find({});
+  if (req.session.uniqueId) {
+    var isloggedin = req.session.user.username;
+  } else var isloggedin = "login/register";
   var id = req.params.id;
   var blogg = blogModule.find({ _id: id });
   blogg.exec((err, data) => {
     // console.log(data);
-    res.render("Home/blog", { blog: data[0] });
+    res.render("Home/blog", { blog: data[0], isloggedin: isloggedin });
   });
 });
 
@@ -178,9 +182,9 @@ router.post("/createblog", upload, (req, res, next) => {
   var username = req.session.user.username;
   var blog = new blogModule({ title, body, username, image });
   // console.log(blog);
-  blog.save((err, exec) => {
+  blog.save((err, data) => {
     if (err) throw err;
-    res.redirect("/blogs");
+    res.redirect(`/blog/${data._id}`);
   });
 });
 
@@ -195,13 +199,19 @@ router.get("/blog/delete/:id", (req, res, next) => {
 //Get Jobs/Internships page
 router.get("/opportunities", (req, res, next) => {
   var opps = jobModule.find({});
+  if (req.session.uniqueId) {
+    var isloggedin = req.session.user.username;
+  } else var isloggedin = "login/register";
   opps.exec((err, data) => {
     if (err) throw err;
     console.log(data);
-    res.render("Home/opportunities", { jobs: data });
+    res.render("Home/opportunities", { jobs: data, isloggedin: isloggedin });
   });
 });
 router.get("/jobs/:id", (req, res, next) => {
+  if (req.session.uniqueId) {
+    var isloggedin = req.session.user.username;
+  } else var isloggedin = "login/register";
   var id = req.params.id;
   var jobtype;
   if (id == "01") {
@@ -215,18 +225,24 @@ router.get("/jobs/:id", (req, res, next) => {
   opps.exec((err, data) => {
     if (err) throw err;
     console.log(data);
-    res.render("Home/opportunities", { jobs: data });
+    res.render("Home/opportunities", { jobs: data, isloggedin: isloggedin });
   });
 });
 
 //Get a Job/Internship page
 router.get("/opportunity/:id", (req, res, next) => {
+  if (req.session.uniqueId) {
+    var isloggedin = req.session.user.username;
+  } else var isloggedin = "login/register";
   var id = req.params.id;
   var opp = jobModule.findById(id);
   opp.exec((err, data) => {
     if (err) throw err;
     console.log(data);
-    res.render("Home/opportunity", { opportunity: data });
+    res.render("Home/opportunity", {
+      opportunity: data,
+      isloggedin: isloggedin,
+    });
   });
 });
 
@@ -253,7 +269,7 @@ router.post("/createjob", (req, res, next) => {
   });
   job.save((err, exec) => {
     if (err) throw err;
-    res.redirect("/opportunities");
+    res.redirect(`/opportunity/${data._id}`);
   });
 });
 
@@ -267,16 +283,24 @@ router.get("/opportunities/delete/:id", (req, res, next) => {
 
 // Get all contests
 router.get("/contests", (req, res, next) => {
-  res.render("Home/contests");
+  if (req.session.uniqueId) {
+    var isloggedin = req.session.user.username;
+  } else var isloggedin = "login/register";
+  contestModule.find({}).exec((err, data) => {
+    res.render("Home/contests", { contests: data, isloggedin: isloggedin });
+  });
 });
 
 // Get a contest
-router.get("/contests/:id", (req, res, next) => {
+router.get("/contest/:id", (req, res, next) => {
   var id = req.params.id;
+  if (req.session.uniqueId) {
+    var isloggedin = req.session.user.username;
+  } else var isloggedin = "login/register";
   var cont = contestModule.findById(id);
   cont.exec((err, data) => {
     if (err) throw err;
-    res.render("Home/contest", { contest: data[0] });
+    res.render("Home/contest", { contest: data, isloggedin: isloggedin });
   });
 });
 
@@ -286,9 +310,10 @@ router.post("/createcontest", (req, res, next) => {
   var username = req.session.user.username;
 
   var contest = new contestModule({ title, summary, applylink, username });
-  contest.save((err, exec) => {
+  contest.save((err, data) => {
     if (err) throw err;
-    res.send("contestcreated");
+    console.log(data._id);
+    res.redirect(`/contest/${data._id}`);
   });
 });
 
