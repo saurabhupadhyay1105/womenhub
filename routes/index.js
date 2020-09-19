@@ -117,10 +117,10 @@ router.get("/blogs/:id", (req, res, next) => {
 })
 
 // Create a new blog
-router.post("/createblog/", (req, res, next) => {
-  var { title, content } = req.body;
+router.post("/createblog", (req, res, next) => {
+  var { title, body } = req.body;
   username = "utkarsh17verma";
-  var blog = new blogModule({ title, content, username });
+  var blog = new blogModule({ title, body, username });
   blog.save((err, exec) => {
     if (err) throw err;
     res.send("blogcreated");
