@@ -1,6 +1,44 @@
 <%- include header.ejs %>
-<h4 style="margin-top: 100px;"><%= blog.title %></h4>
-<h4><%- blog.body %></h4>
-<h4><%= blog.username%></h4>
-<h4><%= blog.likes %></h4>
+
+<head>
+    <link rel="stylesheet" href="/public/stylesheets/blog.css">
+</head>
+<div class="container singleblog-wrapper">
+    <div class="row justify-content-center">
+        <div class="col-sm-8">
+            <div class="card">
+                <div class="card-body">
+                    <div class="card-title">
+                        <h3><%= blog.title %></h3>
+                    </div>
+                    <div class="card-subtitle">
+                        <a class="btn" href="#">
+                            <h5>
+                               <%= blog.username%>
+                            </h5>
+                            <h5>
+                                22aug, 2019
+                            </h5>
+                        </a>
+
+                        <i class="fa fa-share" aria-hidden="true"></i>
+                        <i class="far fa-heart" aria-hidden="true">5</i>
+                        <!-- use class fa fa-heart for solid filled heart -->
+                        
+                    </div>
+                    <div class="card-text">
+                        <p>
+                        <%- blog.body %>
+                        </p>
+                    </div>
+
+                    <i class="fa fa-share" aria-hidden="true"></i>
+                    <i class="far fa-heart buttom-icon" aria-hidden="true"><%= blog.likes %></i>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 <%- include footer.ejs %>
