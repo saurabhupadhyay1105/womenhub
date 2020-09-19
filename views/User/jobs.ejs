@@ -1,4 +1,5 @@
 <%- include header.ejs %>
+<script src="https://cdn.ckeditor.com/4.15.0/standard/ckeditor.js"></script>
 
 <div class="container mt-2 mb-5">
     <div class="row justify-content-center">
@@ -26,19 +27,20 @@
                         </div>
                         <div class="mb-3">
                             <label for="title" class="form-label">Title</label>
-                            <input type="text" class="form-control" id="title" name="title" required >
+                            <input type="text" class="form-control" id="title" name="title" required>
                         </div>
                         <div class="mb-3">
                             <label for="description" class="form-label">Description</label>
-                            <textarea type="text" class="form-control" id="description" name="description" rows="10" required ></textarea>
+                            <textarea type="text" class="form-control" id="description" name="description" rows="10"
+                                required></textarea>
                         </div>
                         <div class="mb-3">
                             <label for="organisation" class="form-label">Organisation/Company Name</label>
-                            <input type="text" class="form-control" id="organisation" name="organisation" required >
+                            <input type="text" class="form-control" id="organisation" name="organisation" required>
                         </div>
                         <div class="mb-3">
                             <label for="applylink" class="form-label">Apply Link</label>
-                            <input type="text" class="form-control" id="applylink" name="applylink" required >
+                            <input type="text" class="form-control" id="applylink" name="applylink" required>
                         </div>
                         <label class="checkbox-inline">
                             <input type="checkbox" value="" required> I have verified my JOB/INTERNSHIP.
@@ -52,5 +54,6 @@
         </div>
     </div>
 </div>
+<script>CKEDITOR.replace('description');</script>
 
 <%- include footer.ejs %>
