@@ -22,6 +22,14 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use("/public", express.static(path.join(__dirname, "public")));
+app.use(
+  session({
+    secret: "9p3BHArgffd5434rf:XUCV>.",
+    resave: false,
+    saveUninitialized: true,
+    cookie: { maxAge: 1000 * 60 * 60 * 24 * 7 },
+  })
+);
 app.use("/", indexRouter);
 app.use("/users", usersRouter);
 
@@ -35,14 +43,7 @@ mongoose
   .then(() => {
     console.log("DB CONNECTED");
   });
-app.use(
-  session({
-    secret: "9p3BHArgffd5434rf:XUCV>.",
-    resave: false,
-    saveUninitialized: true,
-    cookie: { maxAge: 1000 * 60 * 60 * 24 * 7 },
-  })
-);
+
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
   next(createError(404));
