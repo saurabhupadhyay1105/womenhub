@@ -1,4 +1,5 @@
 <%- include header.ejs %>
+
 <head>
     <link rel="stylesheet" href="/public/stylesheets/opportunity.css">
 </head>
@@ -8,34 +9,32 @@
             <div class="card card-wrapper">
                 <div class="card-body">
                     <div class="card-title">
-                        <h4>name of internship/job</h4>
+                        <h4><%= opportunity.title %></h4>
                     </div>
 
                     <div class="card-subtitle">
-                        <h5 class="formargin">company name</h5>
+                        <h5 class="formargin"><%= opportunity.company %></h5>
                     </div>
 
                     <div class="card-subtitle">
-                        <h5>type of opportnity</h5>
+                        <h5><%= opportunity.type %></h5>
                     </div>
 
-                    <div class="card-subtitle posted-by-margin" >
-                        <span>posted by</span><span> name of the person</span>
+                    <div class="card-subtitle posted-by-margin">
+                        <span>posted by</span><span><%= opportunity.username %></span>
                         <span style="float: right;">5 august, 1999</span>
                     </div>
 
                     <div class="card-text ">
                         <p>
-                            i am so tired but i have to work i know all i have is now , i am not gonna rest at all
-                            i am so tired but i have to work i know all i have is now , i am not gonna rest at all
-                            i am so tired but i have to work i know all i have is now , i am not gonna rest at all
-                            i am so tired but i have to work i know all i have is now , i am not gonna rest at all
+                            <%- opportunity.description %>
                         </p>
                     </div>
 
                     <div class="row justify-content-center view-button">
                         <div class="col-12">
-                            <a href="#"><button type="button" class="btn btn-danger">apply</button></a>
+                            <a href="<%= opportunity.applylink %>"><button type="button"
+                                    class="btn btn-danger">apply</button></a>
                         </div>
                     </div>
                 </div>
