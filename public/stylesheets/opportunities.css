@@ -1,0 +1,41 @@
+.internship-wrapper{
+    margin-top: 100px;
+    margin-bottom: 100px;
+}
+
+.internship-wrapper .card-title{
+    text-align: center;
+}
+
+.internship-wrapper .card-subtitle a{
+    color: black;
+    text-decoration: none;
+    justify-content: center;
+}
+
+.internship-wrapper .card-subtitle .row{
+    margin-top: 35px;
+}
+
+
+.opty-cards-proto{
+    margin-top: 25px;
+}
+
+
+.opty-cards-proto .card-subtitle .company-margin{
+    margin-top: 30px;
+}
+
+.opty-cards-proto .view-button{
+    margin-top: 20px;
+}
+
+.opty-nav-wrapper{
+    background-color: #fabea7;
+    border-radius: 5px;
+}
+
+.nav-button-wrapper .active a{
+    color: white;
+}
