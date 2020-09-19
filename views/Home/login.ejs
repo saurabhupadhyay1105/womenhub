@@ -182,43 +182,44 @@
                     </div>
 
             </form>
-            <div class="tab-pane fade show" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                <h3 class="register-heading">Sign Up</h3>
-                <div class="row register-form">
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <input type="text" class="form-control" placeholder="First Name *" value="" />
-                        </div>
-                        <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Last Name *" value="" />
-                        </div>
-                        <div class="form-group">
-                            <input type="email" class="form-control" placeholder="Email *" value="" />
-                        </div>
-                        <div class="form-group">
-                            <input type="text" maxlength="10" minlength="10" class="form-control" placeholder="Phone *"
-                                value="" />
-                        </div>
+            <form action="/register" method="POST">
+                <div class="tab-pane fade show" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                    <h3 class="register-heading">Sign Up</h3>
+                    <div class="row register-form">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="First Name *" value="" />
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Last Name *" value="" />
+                            </div>
+                            <div class="form-group">
+                                <input type="email" class="form-control" placeholder="Email *" value="" />
+                            </div>
+                            <div class="form-group">
+                                <input type="text" maxlength="10" minlength="10" class="form-control"
+                                    placeholder="Phone *" value="" />
+                            </div>
 
 
-                    </div>
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <input type="password" class="form-control" placeholder="Password *" value="" />
                         </div>
-                        <div class="form-group mb-5">
-                            <input type="password" class="form-control" placeholder="Confirm Password *" value="" />
-                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <input type="password" class="form-control" placeholder="Password *" value="" />
+                            </div>
+                            <div class="form-group mb-5">
+                                <input type="password" class="form-control" placeholder="Confirm Password *" value="" />
+                            </div>
 
 
-                        <input type="submit" class="btnRegister" value="Register" />
+                            <input type="submit" class="btnRegister" value="Register" />
+                        </div>
                     </div>
                 </div>
-            </div>
         </div>
     </div>
+    </form>
 </div>
-
 </div>
 
 
