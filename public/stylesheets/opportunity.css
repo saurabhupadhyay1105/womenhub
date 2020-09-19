@@ -1,0 +1,19 @@
+
+
+.opty-wrapper{
+    margin-top: 100px;
+    margin-bottom: 100px;
+}
+
+.opty-wrapper .card-subtitle .formargin{
+    margin-top: 30px;
+}
+
+.opty-wrapper .posted-by-margin{
+    margin-top: 30px;
+}
+
+.opty-wrapper .card-text{
+    margin-top: 25px;
+    text-align: justify;
+}
