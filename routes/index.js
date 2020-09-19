@@ -277,7 +277,7 @@ router.post("/createjob", (req, res, next) => {
 router.get("/opportunities/delete/:id", (req, res, next) => {
   var id = req.params.id;
   jobModule.findByIdAndDelete(id).exec((err, data) => {
-    res.redirect("User/jobs");
+    res.redirect("/users/job");
   });
 });
 
@@ -318,10 +318,10 @@ router.post("/createcontest", (req, res, next) => {
 });
 
 //Delete a contest
-router.get("/opportunities/delete/:id", (req, res, next) => {
+router.get("/contest/delete/:id", (req, res, next) => {
   var id = req.params.id;
   contestModule.findByIdAndDelete(id).exec((err, data) => {
-    res.render("Home/index");
+    res.redirect("/users/contest");
   });
 });
 

@@ -32,6 +32,33 @@
                     </form>
                 </div>
             </div>
+
+            <div class="card mt-5 mb-5">
+                <div class="card-header">
+                    Contests posted by You
+                </div>
+                <div class="card-bod pt-3 pl-2 pr-2 pb-3">
+                    <table id="table_id" class="display">
+                        <thead>
+                            <tr>
+                                <th>Title</th>
+                                <th>Published On</th>
+                                <th>Delete</th>
+                            </tr>
+                        </thead>
+                        <% if(contests.length>0){ contests.forEach(contest=>{ %>
+                        <tbody>
+                            <tr>
+                                <td><a href="/contest/<%= contest._id %>"><%= contest.title %></a></td>
+                                <td><%=moment(contest.date).format('DD-MMM-YYYY') %></td>
+                                <td><a href="/contest/delete/<%= contest._id %>"><i class="fas fa-trash"></i></a></td>
+                            </tr>
+                        </tbody>
+                        <% })} %>
+                    </table>
+                </div>
+            </div>
+
         </div>
     </div>
 </div>

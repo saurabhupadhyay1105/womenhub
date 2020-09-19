@@ -4,6 +4,7 @@ const moment = require('moment');
 var blogModule = require("../models/blogs");
 var userModule = require("../models/users");
 var jobModule = require("../models/jobs");
+var contestModule = require("../models/contests");
 
 //GET user dashboard
 router.get("/dashboard", (req, res, next) => {
@@ -54,7 +55,7 @@ router.get("/job", (req, res, next) => {
       });
     });
   } else {
-    res.redirect("Home/login");
+    res.redirect("/login");
   }
 });
 
@@ -65,10 +66,14 @@ router.get("/contest", (req, res, next) => {
     var user = userModule.findOne({ username: username });
     user.exec((err, data) => {
       if (err) throw err;
-      res.render("User/contest", { username: username, user: data });
+      contestModule.find({username: username})
+      .exec((err, data1) =>{
+        if(err) throw err;
+        res.render("User/contest", { username: username, user: data, contests:data1, moment: moment });
+      });
     });
   } else {
-    res.redirect("Home/login");
+    res.redirect("/login");
   }
 });
 
