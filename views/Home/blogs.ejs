@@ -6,9 +6,16 @@
 </head>
 <% if(blogs.length>0){ blogs.forEach(blog=>{ %>
 <div class="container blog-wrapper">
+
+    <div class="inspire-heading">
+        <h1>Get Inspired</h1>
+        <a class="btn btn-secondary" href="#" role="button">Write a Blog</a>
+      </div>
+
+
     <div class="row justify-content-center gapping">
         <div class="col-sm-8 ">
-            <div class="card">
+            <div class="card card-cus">
                 <div class="card-body">
                     <a href="/blogs/<%=blog._id %>" class="card-title"><%= blog.title %></h4>
                         <a href="./blog.ejs">
@@ -27,8 +34,6 @@
     </div>
     <% })} %>
 
-
-</div>
 
 
 </div>
