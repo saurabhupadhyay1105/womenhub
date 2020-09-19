@@ -1,16 +1,18 @@
 var express = require("express");
 var userModule = require("../models/users");
+var blogModule = require("../models/blogs");
+var jobModule = require("../models/jobs");
+var contestModule = require("../models/contests");
 var router = express.Router();
 var session = require("express-session");
 var bcrypt = require("bcryptjs");
+
+
 /* GET home page. */
 router.get("/", function (req, res, next) {
   res.render("Home/index");
 });
 
-router.post("/createjobs", function (req, res, next) {
-  res.render("Home/opportunities");
-});
 
 //GET user dashboard
 router.get("/dashboard", function (req, res, next) {
@@ -30,19 +32,8 @@ router.get("/dashboard", function (req, res, next) {
     res.render("Home/login", { message: "", isloggedin: "login" });
   }
 });
-// GET Register Page
-router.get("/register", function (req, res, next) {
-  session = req.session;
-  // console.log(session.uniqueId);
-  if (session.uniqueId) {
-    req.session.destroy((err) => {
-      console.log(err);
-      res.render("Home/register", { msg: "", isloggedin: "login" });
-    });
-  } else res.render("Home/register", { msg: "", isloggedin: "login" });
-});
-//post register
 
+//post register
 router.post("/register", (req, res, next) => {
   var { username, name, password, email, mobileno } = req.body;
   password = bcrypt.hashSync(req.body.password, 12);
@@ -63,6 +54,18 @@ router.post("/register", (req, res, next) => {
     // });
   });
 });
+
+//checking already registered user
+
+router.post("/checkusername", (req, res, next) => {
+  var username = req.body.username;
+  userModule.find({ username: usermame }).exec((err, user) => {
+    if (err) throw err;
+    if (user[0]) res.json({ message: "username already there" });
+    else res.json({ message: "username available" });
+  });
+});
+
 
 router.post("/login", function (req, res, next) {
   var mobileno = req.body.mobileno;
@@ -110,21 +113,78 @@ router.get("/redirect", (req, res) => {
     });
   }
 });
+
+
+// Get Blogs page
 router.get("/blogs", function (req, res, next) {
   res.render("Home/blogs");
 });
 
-// ajax routes
 
-//checking already registered user
+//Get a Blog
 
-router.post("/checkusername", (req, res, next) => {
-  var username = req.body.username;
-  userModule.find({ username: usermame }).exec((err, user) => {
+
+// Create a new blog
+router.post("/createblog", (req, res, next) => {
+  var { title, content } = req.body;
+  username="utkarsh17verma";
+  var blog = new blogModule({ title, content, username});
+  blog.save((err, exec) => {
     if (err) throw err;
-    if (user[0]) res.json({ message: "username already there" });
-    else res.json({ message: "username available" });
+    res.send("blogcreated");
   });
 });
+
+
+//Delete a blog
+
+
+//Get Jobs/Internships page
+router.get("/opportunities", (req, res, next) => {
+  res.render("Home/opportunities");
+});
+
+
+//Get a Job/Internship page
+
+
+// Create a new JOB/INTERNSHIP
+router.post("/createjob", (req, res, next) => {
+  var { title, type, description, organisation, applylink, category } = req.body;
+  username="utkarsh17verma";
+  var job = new jobModule({ title, type, description, organisation, applylink, category, username});
+  job.save((err, exec) => {
+    if (err) throw err;
+    res.send("jobcreated");
+  });
+});
+
+
+// Delete a JOB/Internship
+
+
+// Get all contests
+router.get("/contests", (req, res, next) => {
+  res.render("Home/contests");
+});
+
+
+// Get a contest
+
+
+// Create a new Contest
+router.post("/createcontest", (req, res, next) => {
+  var { title, summary, applylink } = req.body;
+  username="utkarsh17verma";
+  var contest = new contestModule({ title, summary, applylink, username});
+  contest.save((err, exec) => {
+    if (err) throw err;
+    res.send("contestcreated");
+  });
+});
+
+
+//Delete a contest
+
 
 module.exports = router;

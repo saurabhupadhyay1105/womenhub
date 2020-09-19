@@ -1,26 +1,27 @@
 const mongoose = require("mongoose");
 
-var oppSchema = new mongoose.Schema({
-  jobtitle: {
+var contestSchema = new mongoose.Schema({
+  title: {
     type: String,
     required: true,
   },
 
-  type: {
+  summary: {
     type: String,
     required: true,
   },
 
-  description: {
+  username: {
     type: String,
     required: true,
   },
 
-  organisation: {
+  applylink: {
     type: String,
+    required: true,
   },
 
   date: { type: Date, default: Date.now },
 });
-var oppModel = mongoose.model("Opp", oppSchema);
-module.exports = oppModel;
+var contestModel = mongoose.model("Contest", contestSchema);
+module.exports = contestModel;
