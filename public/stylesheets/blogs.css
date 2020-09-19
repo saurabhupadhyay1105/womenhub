@@ -1,6 +1,4 @@
-.blog-wrapper .row {
-    border: 6px solid pink;
-}
+
 
 .gapping { margin-top:20px; }
 
@@ -8,9 +6,25 @@
   display: block;
   display: -webkit-box;
   max-width: 100%;
-  margin: 0 auto;
-  -webkit-line-clamp: 3;
+  margin-top: 25px;
+  -webkit-line-clamp: 4;
   -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis;
-  }
+}
+
+.container{
+  margin-top: 150px;
+}
+
+.like{
+  display: inline;
+}
+
+.like .likeicon{
+  float: right;
+}
+
+.like .post{
+  float: left;
+}
