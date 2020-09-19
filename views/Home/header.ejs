@@ -10,13 +10,12 @@
   <title>Women Hub</title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css"
     integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" 
-    integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
-    <link rel="stylesheet" href="/public/stylesheets/navbar.css">
-    <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
-  
-  <style>
+  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+    integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+  <link rel="stylesheet" href="/public/stylesheets/navbar.css">
+  <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
 
+  <style>
     .bd-placeholder-img {
       font-size: 1.125rem;
       text-anchor: middle;
@@ -32,24 +31,44 @@
       }
     }
   </style>
+  <style>
+    .makedisable {
+      pointer-events: none;
+      opacity: 0.4;
+    }
+
+    .msgalerts {
+      margin-left: 7px;
+      margin-bottom: 6px;
+    }
+  </style>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 
 </head>
 
 <body>
   <header>
     <a href="/ " class='logo'>
-        <!--<img src="/public/img/findonorlogo.png" alt="FindDonor">--> 
-        WOMENHUB
+      <!--<img src="/public/img/findonorlogo.png" alt="FindDonor">-->
+      WOMENHUB
     </a>
     <div></div>
     <ul class="navlinks">
+
+      <li><a href="/blogs">Get Inspired</a></li>
+      <li><a href="/opportunities">Opportunities</a></li>
+      <li><a href="/contest" class="disabled">Contests</a></li>
+      <li><a href="" class="btn btn-default btn-rounded my-3" data-toggle="modal"
+          data-target="#modalLRForm">LogIn/Register</a></li>
+
         <li><a href="/blogs">Get Inspired</a></li>
         <li><a href="/opportunities">Opportunities</a></li>
         <li><a href="/contests" class="disabled">Contests</a></li>
         <li><a href="" class="btn btn-default btn-rounded my-3" data-toggle="modal" data-target="#modalLRForm">LogIn/Register</a></li>
 
 
-        <!--
+
+      <!--
           <li>
             <div class="logout-menu">
                 <button>Team</button>
@@ -76,16 +95,16 @@
 
 
     <div class="lines">
-        <div class="line1"></div>
-        <div class="line2"></div>
-        <div class="line3"></div>
+      <div class="line1"></div>
+      <div class="line2"></div>
+      <div class="line3"></div>
     </div>
-</header>
-<section style="min-height: 70px; background-color: #fabea7;"></section>
-<script type="text/javascript" src="/public/stylesheets/navbar.js"></script>
+  </header>
+  <section style="min-height: 70px; background-color: #fabea7;"></section>
+  <script type="text/javascript" src="/public/stylesheets/navbar.js"></script>
 
 
-<!--
+  <!--
   <header>
     <nav class="navbar navbar-expand-md fixed-top bg-white shadow-sm">
       <div class="container-fluid">
@@ -122,90 +141,147 @@
 -->
 
   <!--Modal: Login / Register Form-->
-<div class="modal fade" id="modalLRForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog cascading-modal" role="document">
-    <!--Content-->
-    <div class="modal-content">
+  <div class="modal fade" id="modalLRForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog cascading-modal" role="document">
+      <!--Content-->
+      <div class="modal-content">
 
-      <!--Modal cascading tabs-->
-      <div class="modal-c-tabs">
+        <!--Modal cascading tabs-->
+        <div class="modal-c-tabs">
 
-        <!-- Nav tabs -->
-        <ul class="nav nav-tabs md-tabs tabs-2 light-blue darken-3" role="tablist">
-          <li class="nav-item">
-            <a class="nav-link active" data-toggle="tab" href="#panel7" role="tab">Login</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" data-toggle="tab" href="#panel8" role="tab">Register</a>
-          </li>
-        </ul>
+          <!-- Nav tabs -->
+          <ul class="nav nav-tabs md-tabs tabs-2 light-blue darken-3" role="tablist">
+            <li class="nav-item">
+              <a class="nav-link active" data-toggle="tab" href="#panel7" role="tab">Login</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" data-toggle="tab" href="#panel8" role="tab">Register</a>
+            </li>
+          </ul>
 
-        <!-- Tab panels -->
-        <div class="tab-content">
-          <!--Panel 7-->
-          <div class="tab-pane fade in show active" id="panel7" role="tabpanel">
+          <!-- Tab panels -->
+          <div class="tab-content">
+            <!--Panel 7-->
+            <div class="tab-pane fade in show active" id="panel7" role="tabpanel">
 
-            <!--Body-->
-            <div class="modal-body mb-1">
-              <form>
-                <div class="mb-3">
-                  <label for="regemail" class="form-label">Email address</label>
-                  <input type="email" class="form-control" name="mobileno" id="loginemail" required>
-                </div>
-                <div class="mb-3">
-                  <label for="registerpassword" class="form-label">Password</label>
-                  <input type="password" class="form-control" id="loginpass" required>
-                </div>
-                <button type="submit" class="btn btn-primary">SIGN IN</button>
-              </form>
-            </div>
-            <!--Footer-->
-            <div class="modal-footer">
-              <div class="options text-center text-md-right mt-1">
-                <p><a href="#" class="blue-text">Forgot Password?</a></p>
+              <!--Body-->
+              <div class="modal-body mb-1">
+                <form action="/login" method="post">
+                  <div class="mb-3">
+                    <label for="regemail" class="form-label">Email address</label>
+                    <input type="text" class="form-control" name="email" id="loginemail" required>
+                  </div>
+                  <div class="mb-3">
+                    <label for="registerpassword" class="form-label">Password</label>
+                    <input type="password" class="form-control" name="password" id="loginpass" required>
+                  </div>
+                  <button type="submit" class="btn btn-primary">SIGN IN</button>
+                </form>
               </div>
-              <button type="button" class="btn btn-outline-info waves-effect ml-auto" data-dismiss="modal">Close</button>
+              <!--Footer-->
+              <div class="modal-footer">
+                <div class="options text-center text-md-right mt-1">
+                  <p><a href="#" class="blue-text">Forgot Password?</a></p>
+                </div>
+                <button type="button" class="btn btn-outline-info waves-effect ml-auto"
+                  data-dismiss="modal">Close</button>
+              </div>
+
             </div>
+            <!--/.Panel 7-->
 
-          </div>
-          <!--/.Panel 7-->
+            <!--Panel 8-->
+            <div class="tab-pane fade" id="panel8" role="tabpanel">
 
-          <!--Panel 8-->
-          <div class="tab-pane fade" id="panel8" role="tabpanel">
+              <!--Body-->
+              <div class="modal-body">
+                <form action="/register" method="POST" onsubmit="checkregform(this)">
+                  <div class="mb-3">
+                    <label for="name" class="form-label">Name</label>
+                    <input type="text" class="form-control" id="name" name="name" required>
+                  </div>
+                  <div class="mb-3">
+                    <label for="mobile" class="form-label">Mobile Number</label>
+                    <input type="number" class="form-control" id="mobile" name="mobileno" onkeyup="checkmobile();"
+                      required>
+                  </div>
+                  <div class="mb-3">
+                    <label for="regemail" class="form-label">Email address</label>
+                    <input type="email" class="form-control" name="email" id="email" onkeyup="checkemail();"
+                      id="regemail">
+                  </div>
+                  <div class="mb-3">
+                    <label for="username" class="form-label">Username</label>
+                    <input type="text" class="form-control" name="username" id="username" onkeyup="checkusername();"
+                      id="username" required>
 
-            <!--Body-->
-            <div class="modal-body">
-              <form action="/register" method="POST" onsubmit="checkregform(this)">
-                <div class="mb-3">
-                  <label for="name" class="form-label">Name</label>
-                  <input type="text" class="form-control" id="name" name="name" required>
-                </div>
-                <div class="mb-3">
-                  <label for="mobile" class="form-label">Mobile Number</label>
-                  <input type="number" class="form-control" id="mobile" name="mobileno" onkeyup="checkmobile();" required>
-                </div>
-                <div class="mb-3">
-                  <label for="regemail" class="form-label">Email address</label>
-                  <input type="email" class="form-control" name="email" onkeyup="checkemail();" id="regemail">
-                </div>
-                <div class="mb-3">
-                  <label for="username" class="form-label">Username</label>
-                  <input type="text" class="form-control" name="username" onkeyup="checkusername();" id="username" required>
-                </div>
-                <div class="mb-3">
-                  <label for="registerpassword" class="form-label">Password</label>
-                  <input type="password" class="form-control" name="password" id=regpass>
-                </div>
-                <button type="submit" class="btn btn-primary">SIGN UP</button>
-              </form>
+                  </div>
+                  <p id="alert-username" class="msgalerts"></p>
+                  <div class="mb-3">
+                    <label for="registerpassword" class="form-label">Password</label>
+                    <input type="password" class="form-control" name="password" id=regpass>
+                  </div>
+                  <button type="submit" id="signup" class="btn btn-primary">SIGN UP</button>
+                </form>
+              </div>
             </div>
+            <!--/.Panel 8-->
           </div>
-          <!--/.Panel 8-->
+
         </div>
-
       </div>
+      <!--/.Content-->
     </div>
-    <!--/.Content-->
   </div>
-</div>
-<!--Modal: Login / Register Form-->
+  <!--Modal: Login / Register Form-->
+  <script type="text/javascript">
+    function checkusername() {
+      data = {};
+      data.username = document.getElementById("username").value;
+      $.ajax({
+        url: "/checkusername",
+        method: "POST",
+        data: JSON.stringify(data),
+        contentType: 'application/json',
+        success: function (response) {
+          // console.log(response)
+          if (response.message == "username already there") {
+            document.getElementById('alert-username').innerHTML = "Sorry This username is already in use";
+            document.getElementById('signup').className = "btn btn-block btn-danger halfcircle makedisable";
+
+
+          } else {
+            document.getElementById('alert-username').innerHTML = "";
+            document.getElementById('signup').className = "btn btn-block btn-danger halfcircle";
+
+          }
+        }
+      });
+    }
+  </script>
+  <script type="text/javascript">
+    function checkusername() {
+      data = {};
+      data.email = document.getElementById("email").value;
+      $.ajax({
+        url: "/checkemail",
+        method: "POST",
+        data: JSON.stringify(data),
+        contentType: 'application/json',
+        success: function (response) {
+          // console.log(response)
+          if (response.message == "email already there") {
+            document.getElementById('alert-email').innerHTML = "Sorry This email is already in use";
+            document.getElementById('signup').className = "btn btn-block btn-danger halfcircle makedisable";
+
+
+          } else {
+            document.getElementById('alert-email').innerHTML = "";
+            document.getElementById('signup').className = "btn btn-block btn-danger halfcircle";
+
+          }
+        }
+      });
+    }
+  </script>

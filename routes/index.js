@@ -9,12 +9,22 @@ var bcrypt = require("bcryptjs");
 
 /* GET home page. */
 router.get("/", function (req, res, next) {
-  res.render("Home/index");
+  if (req.session.uniqueId) {
+    var username = req.session.user.username;
+    res.render("Home/index", { isloggedin: username });
+  } else {
+    res.render("Home/index", { isloggedin: "login/register" });
+  }
 });
 
 //Get login Page
 router.get("/login", (req, res, next) => {
-  res.render("Home/login");
+  if (req.session.uniqueId) {
+    var username = req.session.user.username;
+    res.redirect("/users/dashboard");
+  } else {
+    res.render("Home/login", { isloggedin: "login/register" });
+  }
 });
 
 //post register
@@ -26,10 +36,21 @@ router.post("/register", (req, res, next) => {
     if (err) {
       return res.status(200).render("Home/register", {
         msg: "fill details properly",
-        isloggedin: "login",
+        isloggedin: "login/register",
       });
+    } else {
+      session = req.session;
+      session.uniqueId = mobileno;
+      var userr = {
+        username: username,
+        name: name,
+        password: password,
+        email: email,
+        mobileno: mobileno,
+      };
+      session.user = userr;
+      res.redirect("/users/dashboard");
     }
-    res.send("registered");
     // res.status(200).render("Home/register", {
     //   msg: "user registed successfully",
     //   isloggedin: "login",
@@ -43,10 +64,18 @@ router.post("/register", (req, res, next) => {
 
 router.post("/checkusername", (req, res, next) => {
   var username = req.body.username;
-  userModule.find({ username: usermame }).exec((err, user) => {
+  userModule.find({ username: username }).exec((err, user) => {
     if (err) throw err;
     if (user[0]) res.json({ message: "username already there" });
     else res.json({ message: "username available" });
+  });
+});
+router.post("/checkemail", (req, res, next) => {
+  var email = req.body.email;
+  userModule.find({ email: email }).exec((err, user) => {
+    if (err) throw err;
+    if (user[0]) res.json({ message: "email already there" });
+    else res.json({ message: "email available" });
   });
 });
 
@@ -69,8 +98,7 @@ router.post("/login", function (req, res, next) {
         session.uniqueId = mobileno;
         session.user = data;
         console.log(session.user);
-        // res.redirect("/redirect");
-        res.send("logged in");
+        res.redirect("/redirect");
       } else {
         res.render("Home/login", {
           message: "Invalid username and password",
@@ -90,7 +118,7 @@ router.get("/redirect", (req, res) => {
   // console.log(session.uniqueId);
 
   if (session.uniqueId) {
-    res.redirect("/dashboard");
+    res.redirect("/users/dashboard");
   } else {
     res.render("Home/login", {
       message: "",
