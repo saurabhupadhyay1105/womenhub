@@ -6,7 +6,7 @@ var blogSchema = new mongoose.Schema({
     required: true,
   },
 
-  content: {
+  body: {
     type: String,
     required: true,
   },

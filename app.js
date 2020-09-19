@@ -7,6 +7,7 @@ var path = require("path");
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
 var session = require("express-session");
+var bodyParser = require('body-parser');
 
 var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");
@@ -30,6 +31,8 @@ app.use(
     cookie: { maxAge: 1000 * 60 * 60 * 24 * 7 },
   })
 );
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 app.use("/", indexRouter);
 app.use("/users", usersRouter);
 

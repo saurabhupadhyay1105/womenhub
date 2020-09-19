@@ -1,6 +1,33 @@
 <%- include header.ejs %>
 
-
-Write Blogs
+<div class="container mt-2 mb-5">
+    <div class="row justify-content-center">
+        <div class="col-md-10">
+            <div class="card">
+                <div class="card-header">
+                    <h4>Write a New Blog</h4>
+                </div>
+                <div class="card-body">
+                    <form action="/createblog" method="POST">
+                        <div class="mb-3">
+                            <label for="title" class="form-label">Title</label>
+                            <input type="text" class="form-control" id="title" name="title" required >
+                        </div>
+                        <div class="mb-3">
+                            <label for="body" class="form-label">Body</label>
+                            <textarea type="text" class="form-control" id="body" name="body" rows="15" required ></textarea>
+                        </div>
+                        <label class="checkbox-inline">
+                            <input type="checkbox" value="" required> I have verified my content.
+                        </label>
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-primary ">Submit</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 <%- include footer.ejs %>
