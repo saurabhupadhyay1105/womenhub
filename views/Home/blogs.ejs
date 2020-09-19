@@ -4,32 +4,34 @@
     <link rel="stylesheet" href="/public/stylesheets/blogs.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
 </head>
-<% if(blogs.length>0){ blogs.forEach(blog=>{ %>
+
 <div class="container blog-wrapper">
 
     <div class="inspire-heading">
         <h1>Get Inspired</h1>
-        <a class="btn btn-secondary" href="#" role="button">Write a Blog</a>
-      </div>
+        <a class="btn btn-secondary" href="/users/blogs" role="button">Write a Blog</a>
+    </div>
 
-
+    <% if(blogs.length>0){ blogs.forEach(blog=>{ %>
     <div class="row justify-content-center gapping">
         <div class="col-sm-8 ">
+            
             <div class="card card-cus">
+                <a href="/blogs/<%=blog._id %>">
                 <div class="card-body">
-                    <a href="/blogs/<%=blog._id %>" class="card-title"><%= blog.title %></h4>
-                        <a href="./blog.ejs">
-                            <p class="card-text blocklines " title="click to read full blog">
-                                <%- blog.body %>
-                            </p>
-                        </a>
-                        <input type="hidden" name="id" value="<%= blog._id %>" />
-                        <div class="like ">
-                            <h6 class="text-muted post gapping">posted by-<%=blog.username %></h6>
-                            <i class="fa fa-heart likeicon gapping" aria-hidden="true">5</i>
-                        </div>
+                    <h4><%= blog.title %></h4>
+                    <p class="card-text blocklines ">
+                        <%- blog.body %>
+                    </p>
+                    <input type="hidden" name="id" value="<%= blog._id %>" />
+                    <div class="like ">
+                        <h6 class="text-muted post gapping">posted by- <%=blog.username %></h6>
+                        <i class="fa fa-heart likeicon gapping" aria-hidden="true">5</i>
+                    </div>
                 </div>
+            </a>
             </div>
+            
         </div>
     </div>
     <% })} %>
