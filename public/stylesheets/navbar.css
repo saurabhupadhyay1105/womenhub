@@ -41,6 +41,7 @@ header{
     align-content: center;
     transition: 0.5s;
     padding: 6px 80px;
+    background-color: #fabea7;
 }
 
 header.sticky{
@@ -234,7 +235,7 @@ header.sticky .lines div{
 
 /* MOBILE VIEW */
 
-@media screen and (max-width:768px){
+@media screen and (max-width:1000px){
 
     header{
         padding: 12px 100px;
