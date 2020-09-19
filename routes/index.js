@@ -185,10 +185,10 @@ router.post("/createblog", upload, (req, res, next) => {
 });
 
 //Delete a blog
-router.get("/opportunities/delete/:id", (req, res, next) => {
+router.get("/blog/delete/:id", (req, res, next) => {
   var id = req.params.id;
   blogModule.findByIdAndDelete(id).exec((err, data) => {
-    res.render("Home/index");
+    res.redirect("/users/blogs");
   });
 });
 
@@ -261,7 +261,7 @@ router.post("/createjob", (req, res, next) => {
 router.get("/opportunities/delete/:id", (req, res, next) => {
   var id = req.params.id;
   jobModule.findByIdAndDelete(id).exec((err, data) => {
-    res.render("Home/index");
+    res.redirect("User/jobs");
   });
 });
 

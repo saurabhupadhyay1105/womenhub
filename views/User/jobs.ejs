@@ -52,6 +52,31 @@
                     </form>
                 </div>
             </div>
+            <div class="card mt-5 mb-5">
+                <div class="card-header">
+                    Jobs/Internships posted by you
+                </div>
+                <div class="card-bod pt-3 pl-2 pr-2 pb-3">
+                    <table id="table_id" class="display">
+                        <thead>
+                            <tr>
+                                <th>Title</th>
+                                <th>Published On</th>
+                                <th>Delete</th>
+                            </tr>
+                        </thead>
+                        <% if(jobs.length>0){ jobs.forEach(job=>{ %>
+                        <tbody>
+                            <tr>
+                                <td><a href="/opportunity/<%= job._id %>"><%= job.title %></a></td>
+                                <td><%=moment(job.date).format('DD-MMM-YYYY') %></td>
+                                <td><a href="/opportunities/delete/<%= job._id %>"><i class="fas fa-trash"></i></a></td>
+                            </tr>
+                        </tbody>
+                        <% })} %>
+                    </table>
+                </div>
+            </div>
         </div>
     </div>
 </div>
