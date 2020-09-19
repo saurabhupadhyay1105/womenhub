@@ -1,0 +1,376 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800,900$display=swap');
+*{
+    margin: 0;
+    padding: 0; 
+    box-sizing: border-box;
+}
+
+html{
+    scroll-behavior: smooth;
+}
+body{
+    margin: 0; 
+    padding: 0;
+    box-sizing: border-box; 
+    font-family: 'Poppins', sans-serif;
+    overflow-x: hidden;
+    text-decoration: none;
+}
+
+body{
+    background: url(/public/img/wave-bg.png);
+    background-size: 100% 30%;
+	background-repeat: no-repeat;
+    min-height: calc(100% - 274px);
+}
+
+body button:active{
+    outline: none;
+}
+
+header{
+    z-index: 100;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 70px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    align-content: center;
+    transition: 0.5s;
+    padding: 6px 80px;
+    background-color: #fabea7;
+}
+
+header.sticky{
+    padding: 6px 80px;
+    background: #fabea7;
+    box-shadow: 0 5px 15px -6px rgba(54, 54, 54, 0.5);
+}
+
+header .logo{
+    position: relative;
+    font-weight: 500;
+    color:#fff;
+    font-size: 1.5em;
+    text-decoration: none;
+    padding-left: 0px;
+    padding-right: 150px;
+    letter-spacing: 2px;
+    transition: 0.6s;
+    display: flex;
+    align-items: center;
+
+}
+
+
+header .logo > img{
+    height: 50px;
+    width: 50px;
+    margin:3px 10px 3px 3px;
+}
+
+.navlinks{
+    display: flex;
+    justify-content: space-around;
+    align-content: center;
+    align-items: center;
+    width: 80%;
+    padding-top: 20px;
+}
+
+.navlinks li{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    list-style: none;
+    
+}
+.navlinks a{
+    display: flex;
+    align-items: center;
+    
+    position: relative;
+    text-decoration: none;
+    color: #fff;
+    letter-spacing: 2px;
+    font-size: 14px;
+    font-weight: 500px;
+    transition: 0.6s;
+}
+/*-- LOGOUT BUTTON --*/
+.logout-menu{
+    position: relative;
+}
+.logout-menu ul{
+    position: absolute;
+    margin-top: 20px;
+    width: 150px;
+    right: 0;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+    text-decoration: none;
+    list-style: none;
+    border-radius: 5px;
+    background-color: #fff;
+    opacity: 0;
+    pointer-events: none;
+    box-shadow:0 0 10px 2px rgba(54, 54, 54, 0.5);
+    transition: 0.3s ease;
+    transform: translateY(-10px);
+}
+
+.logout-menu button img{
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    border: 3px solid #fff;
+    pointer-events: none;
+}
+
+.logout-menu ul li a{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    text-align: center;
+    align-content: center;
+    height:100%;
+    width: 100%;
+    min-height: 40px;
+    color:#d03541;
+    transition: none;
+    border-radius: 5px;
+   
+}
+
+.logout-menu ul li a:hover{
+    color: #fff;
+    background-color: #fabea7;
+    pointer-events: all !important;
+}
+
+.logout-menu li{
+    width: 100%;
+    height: 100%;
+    min-height: 40px;
+}
+
+
+.logout-menu button{
+    background: none;
+    border: none;
+    color: #fff;
+    text-decoration: none;
+    font-size: 15px;
+    cursor: pointer;
+    letter-spacing: 2px;
+    transition: 0.5s ease;
+
+}
+
+.logout-menu button:focus{
+    outline: none;
+}
+
+.logout-menu button:focus + ul{
+    opacity: 1;
+    pointer-events: all;
+    transform: translateY(0px);
+} 
+
+
+
+
+header.sticky .logo, 
+header.sticky ul li a{
+    color: #fff;
+}
+
+header.sticky .logout-menu button{
+    color: #fff;
+}
+
+header.sticky .logout-menu ul li a{
+    color: #fabea7;
+}
+header.sticky .logout-menu ul li a:hover{
+    color: #fff;
+}
+
+/*MOBILE VIEW -----------------------*/
+.lines{
+    display: none; 
+    cursor: pointer;  
+    margin-left: 50px;
+}
+
+.lines div{
+    width: 25px;
+    height: 3px;
+    background-color: #fff;
+    margin: 5px;
+    transition: all 0.3s ease;
+}
+
+header.sticky .lines div{
+    background-color: #fff;
+}
+
+
+
+/*
+@media screen and (max-width:1024px){
+    h.navlinks{
+        width:80%
+    }
+}
+*/
+
+
+/* MOBILE VIEW */
+
+@media screen and (max-width:1000px){
+
+    header{
+        padding: 12px 100px;
+    }
+
+    header .logo{
+        padding-right: 50px;
+    }
+    
+    
+    header .logo > img{
+        height: 35px;
+        width: 35px;
+        margin-right: 5px;
+    }
+
+    header.sticky{
+        padding: 6px 100px;
+        color: rgb(250, 151, 151);
+
+    }
+
+    .sticky .navlinks a{
+        color: rgb(250, 151, 151);
+    }
+
+    
+    .navlinks a{
+        color: rgb(250, 151, 151);
+        height: 100%;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        align-content: center;
+    }
+
+    .navlinks a:hover{
+        background-color: #fff;
+        color: rgb(250, 151, 151);
+    }
+    header .logo{ 
+        font-size: 2em;
+    }
+    body{
+        overflow-x: hidden;
+    }
+    .navlinks{
+        position: absolute;
+        right: 0px;
+        height: 40vh;
+        top: 12vh;
+        background-color: #fff;
+        color: rgb(250, 151, 151);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 60%;
+        transform: translateX(100%);
+        transition: transform 0.5s ease-in;
+    }
+
+    
+
+    .navlinks li{
+        opacity:0;
+        height: 100%;
+        width: 100%;
+    }
+    .lines{
+        display:block;
+        color:#d03541;
+    }
+    .lines div{
+        width: 25px;
+        height: 3px;
+        margin: 5px;
+    }
+
+    .logout-menu {
+        width: 100%;
+        height: 100%;
+    }
+    .logout-menu ul{
+        position: fixed;
+        top: 0px;
+        right: 200px;
+        
+    }
+
+    .logout-menu ul li, .logout-menu ul li a{
+        height: 100%;
+        width: 100%;
+    }
+    .logout-menu button:focus + ul{
+        opacity: 1;
+        pointer-events: all;
+        transform: translateY(0px);
+    }
+    .logout-menu button:hover{
+        background-color: #a52834;
+    }
+    .logout-menu button{
+        color: #fff;
+        height: 100%;
+        width: 100%;
+    }
+
+}
+
+.nav-active{
+    transform: translateX(0%);
+    font-size: 1.5em;
+}
+
+@keyframes navLinkFade{
+    from{
+        opacity: 0;
+        transform: translateX(50px);
+    }
+    to{
+        opacity: 1;
+        transform: translateX(0px);
+    }
+}
+
+/* ANIMATING THE 3 LINES*/
+.change .line1{
+    transform: rotate(-45deg) translate(-5px,6px);
+}
+
+.change .line2{
+    opacity: 0;
+}
+
+.change .line3{
+    transform: rotate(45deg) translate(-5px,-6px);
+}

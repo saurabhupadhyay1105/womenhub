@@ -1,0 +1,44 @@
+
+
+.gapping { margin-top:20px; }
+
+.blocklines {
+  display: block;
+  display: -webkit-box;
+  max-width: 100%;
+  margin-top: 25px;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.container{
+  margin-top: 150px;
+}
+
+.like{
+  display: inline;
+}
+
+.like .likeicon{
+  float: right;
+}
+
+.like .post{
+  float: left;
+}
+
+.blog-wrapper a{
+  text-decoration: none;
+  color: black;
+}
+
+.blog-wrapper .card:hover{
+  box-shadow: 2px 2px 5px gray;
+  transition: box-shadow 0.3s ease-in-out;
+}
+
+.blog-wrapper .card-title{
+  font-family: 'Roboto', serif;
+}
