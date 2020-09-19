@@ -13,25 +13,11 @@ router.get("/", function (req, res, next) {
   res.render("Home/index");
 });
 
-
-//GET user dashboard
-router.get("/dashboard", function (req, res, next) {
-  session = req.session;
-  // console.log(session.uniqueId);
-  if (session.uniqueId) {
-    userModule.find({ mobileno: session.uniqueId }).exec((err, data) => {
-      var name = data[0].name.split(" ")[0];
-
-      res.render("Home/dashboard", {
-        user: data[0],
-        msg: "",
-        isloggedin: name,
-      });
-    });
-  } else {
-    res.render("Home/login", { message: "", isloggedin: "login" });
-  }
+//Get login Page
+router.get("/login", (req, res, next) => {
+  res.render('Home/login');
 });
+
 
 //post register
 router.post("/register", (req, res, next) => {
