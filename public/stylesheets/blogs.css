@@ -28,3 +28,17 @@
 .like .post{
   float: left;
 }
+
+.blog-wrapper a{
+  text-decoration: none;
+  color: black;
+}
+
+.blog-wrapper .card:hover{
+  box-shadow: 2px 2px 5px gray;
+  transition: box-shadow 0.3s ease-in-out;
+}
+
+.blog-wrapper .card-title{
+  font-family: 'Roboto', serif;
+}
