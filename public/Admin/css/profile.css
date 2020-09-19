@@ -1,0 +1,62 @@
+.row {
+	margin: 0 auto;
+}
+.section-intro {
+	max-width: 700px;
+	text-align: center;
+}
+.section-intro h1 {
+	color: #313131;
+}
+.section-intro h5 {
+	color: #FF0077;
+	font-size: 1.4rem;
+}
+
+.intro-info {
+	margin-top: 2.5rem;
+}
+.intro-info img {
+	height: 9rem;
+	width: 9rem;
+	border-radius: 50%;
+	float: left;
+}
+.intro-info .lead {
+	text-align: left;
+	padding-left: 12rem;
+}
+.social li{
+	padding: 0  1.3rem 0 0;
+
+}
+.about-content {
+	text-align: left;
+	max-width: 850px;
+}
+.about-content h3 {
+	font-family: "poppins-bold", sans-serif;
+	color: #313131;
+	text-transform: uppercase;
+	letter-spacing: .1rem;
+}
+.about-content .info-list {
+	list-style: none;
+}
+.about-content .info-list li {
+	padding: 0 0 1.3rem 0;
+
+}
+.about-content .info-list li strong {
+	font-family: "poppins-bold", sans-serif;
+	color: #313131;
+	text-transform: uppercase;
+	letter-spacing: .1rem;
+	font-size: 1.1rem;
+}
+.about-content .info-list li span {
+	display: block;
+	font-family: "poppins-regular", sans-serif;
+	color: #888888;
+	font-size: 1.1rem;
+}
