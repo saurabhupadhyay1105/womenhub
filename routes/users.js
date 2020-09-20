@@ -77,4 +77,23 @@ router.get("/contest", (req, res, next) => {
   }
 });
 
+
+//GET User Profile
+router.get('/:username', (req, res, next) =>{
+  var user = userModule.findOne({ username: req.params.username });
+  user.exec((err, data) => {
+    if(err) throw err;
+    if(data != null){
+      if (req.session.uniqueId) {
+        var username = req.session.user.username;
+        res.render("Home/profile", { user: data, isloggedin: username });
+      } else {
+        res.render("Home/profile", { user: data, isloggedin: "login/register" });
+      }
+    } else {
+      res.render('error', {isloggedin: "login/register"});
+    }
+  })
+});
+
 module.exports = router;
