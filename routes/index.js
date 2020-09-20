@@ -157,7 +157,7 @@ router.get("/blogs", function (req, res, next) {
       // console.log(username);
       res.render("Home/blogs", { blogs: data, isloggedin: username });
     } else {
-      res.render("Home/blogs", { blogs: data, isloggedin: "login/register" });
+      res.render("Home/blogs", { blogs: data, isloggedin: "login/register", moment:moment });
     }
   });
 });
