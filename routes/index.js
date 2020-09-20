@@ -7,7 +7,7 @@ var contestModule = require("../models/contests");
 var router = express.Router();
 var session = require("express-session");
 var bcrypt = require("bcryptjs");
-const moment = require('moment');
+const moment = require("moment");
 var path = require("path");
 var multer = require("multer");
 var Storage = multer.diskStorage({
@@ -43,6 +43,14 @@ router.get("/", function (req, res, next) {
 
 //Get login Page
 router.get("/login", (req, res, next) => {
+  if (req.session.uniqueId) {
+    var username = req.session.user.username;
+    res.redirect("/users/dashboard");
+  } else {
+    res.render("Home/login", { isloggedin: "login/register" });
+  }
+});
+router.get("/register", (req, res, next) => {
   if (req.session.uniqueId) {
     var username = req.session.user.username;
     res.redirect("/users/dashboard");
@@ -167,7 +175,11 @@ router.get("/blogs", function (req, res, next) {
       // console.log(username);
       res.render("Home/blogs", { blogs: data, isloggedin: username });
     } else {
-      res.render("Home/blogs", { blogs: data, isloggedin: "login/register", moment:moment });
+      res.render("Home/blogs", {
+        blogs: data,
+        isloggedin: "login/register",
+        moment: moment,
+      });
     }
   });
 });
@@ -182,7 +194,11 @@ router.get("/blog/:id", (req, res, next) => {
   var blogg = blogModule.find({ _id: id });
   blogg.exec((err, data) => {
     // console.log(data);
-    res.render("Home/blog", { blog: data[0], isloggedin: isloggedin, moment:moment });
+    res.render("Home/blog", {
+      blog: data[0],
+      isloggedin: isloggedin,
+      moment: moment,
+    });
   });
 });
 
@@ -216,7 +232,11 @@ router.get("/opportunities", (req, res, next) => {
   opps.exec((err, data) => {
     if (err) throw err;
     console.log(data);
-    res.render("Home/opportunities", { jobs: data, isloggedin: isloggedin, moment:moment });
+    res.render("Home/opportunities", {
+      jobs: data,
+      isloggedin: isloggedin,
+      moment: moment,
+    });
   });
 });
 router.get("/jobs/:id", (req, res, next) => {
@@ -236,7 +256,11 @@ router.get("/jobs/:id", (req, res, next) => {
   opps.exec((err, data) => {
     if (err) throw err;
     console.log(data);
-    res.render("Home/opportunities", { jobs: data, isloggedin: isloggedin, moment:moment });
+    res.render("Home/opportunities", {
+      jobs: data,
+      isloggedin: isloggedin,
+      moment: moment,
+    });
   });
 });
 
@@ -249,11 +273,12 @@ router.get("/opportunity/:id", (req, res, next) => {
   var opp = jobModule.findById(id);
   opp.exec((err, data) => {
     if (err) throw err;
-    console.log(data);
+    // console.log(data);
+    // res.send(data);
     res.render("Home/opportunity", {
-      opportunity: data,
+      opportunity: data[0],
       isloggedin: isloggedin,
-      moment:moment
+      moment: moment,
     });
   });
 });
@@ -279,7 +304,7 @@ router.post("/createjob", (req, res, next) => {
     category,
     username,
   });
-  job.save((err, exec) => {
+  job.save((err, data) => {
     if (err) throw err;
     res.redirect(`/opportunity/${data._id}`);
   });
@@ -299,7 +324,11 @@ router.get("/contests", (req, res, next) => {
     var isloggedin = req.session.user.username;
   } else var isloggedin = "login/register";
   contestModule.find({}).exec((err, data) => {
-    res.render("Home/contests", { contests: data, isloggedin: isloggedin, moment:moment });
+    res.render("Home/contests", {
+      contests: data,
+      isloggedin: isloggedin,
+      moment: moment,
+    });
   });
 });
 
@@ -312,7 +341,11 @@ router.get("/contest/:id", (req, res, next) => {
   var cont = contestModule.findById(id);
   cont.exec((err, data) => {
     if (err) throw err;
-    res.render("Home/contest", { contest: data, isloggedin: isloggedin, moment:moment });
+    res.render("Home/contest", {
+      contest: data,
+      isloggedin: isloggedin,
+      moment: moment,
+    });
   });
 });
 

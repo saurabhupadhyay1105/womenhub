@@ -44,6 +44,7 @@
   </style>
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 
+
 </head>
 
 <body>
@@ -58,17 +59,16 @@
       <li><a href="/blogs">Get Inspired</a></li>
       <li><a href="/opportunities">Opportunities</a></li>
       <li><a href="/contests" class="disabled">Contests</a></li>
-      <% if(isloggedin=="login/register") { %>
+      <!-- <% if(isloggedin=="login/register") { %> -->
       <li><a href="" class="btn btn-default btn-rounded my-3" data-toggle="modal"
           data-target="#modalLRForm">LogIn/Register</a></li>
-      <%} else {%>
+      <!-- <%} else {%> -->
       <li class="nav-item dropdown no-arrow">
 
         <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown"
           aria-haspopup="true" aria-expanded="false">
-          <span
-            class="mr-2 d-none d-lg-inline text-gray-600 small"><% if(isloggedin.length >0) {%><%=isloggedin %><%} else { %>
-            login <% }%></span>
+          <span class="mr-2 d-none d-lg-inline text-gray-600 small">
+            profile</span>
 
           <!-- <img class="img-profile rounded-circle" src="/public/Images/default_profile.png"> -->
 
@@ -89,7 +89,7 @@
           </a>
         </div>
       </li>
-      <%}%>
+      <!-- <%}%> -->
     </ul>
 
 
@@ -100,7 +100,7 @@
       <div class="line3"></div>
     </div>
   </header>
-  <section style="min-height: 70px; background-color: #e0dede;"></section>
+  <section style="min-height: 70px; background-color: #fabea7;"></section>
   <script type="text/javascript" src="/public/stylesheets/navbar.js"></script>
 
   <!--Modal: Login / Register Form-->
@@ -209,7 +209,7 @@
         data: JSON.stringify(data),
         contentType: 'application/json',
         success: function (response) {
-          // console.log(response)
+          console.log(response)
           if (response.message == "username already there") {
             document.getElementById('alert-username').innerHTML = "Sorry This username is already in use";
             document.getElementById('signup').className = "btn btn-block btn-danger halfcircle makedisable";
@@ -225,7 +225,7 @@
     }
   </script>
   <script type="text/javascript">
-    function checkusername() {
+    function checkemail() {
       data = {};
       data.email = document.getElementById("email").value;
       $.ajax({
