@@ -1,7 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800,900$display=swap');
 #myFooter {
     background-color: #767c77;
-    padding-top: 30px;
     font-family: Poppins; 
     top: 0;
 }  
@@ -13,9 +12,6 @@
     text-align: center;
 }
 
-#myFooter .row {
-    margin-bottom: 60px;
-}
 
 #myFooter .navbar-brand {
     margin-top: 45px;
@@ -48,14 +44,14 @@
     text-decoration: none;
 }
 
-#myFooter ul a {
+#myFooter h5 a {
     color: #fbe2e5;
     text-decoration: none;
     transition: 0.2s;
 }
 
-#myFooter ul a:hover,
-#myFooter ul a:focus {
+#myFooter h5 a:hover,
+#myFooter h5 a:focus {
     text-decoration: none;
     color:#fff;
 }
