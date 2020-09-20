@@ -259,7 +259,7 @@ router.get("/jobs/:id", (req, res, next) => {
   if (id == "01") {
     jobtype = "Software Engineering";
   } else if (id == "02") {
-    jobtype = "Digital Marekting";
+    jobtype = "Digital Marketing";
   } else if (id == "03") {
     jobtype = "Human Resources";
   }
