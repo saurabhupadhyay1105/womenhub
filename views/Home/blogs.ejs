@@ -23,8 +23,8 @@
                         <p class="card-text blocklines ">
                             <%- blog.body %>
                         </p>
-                        <img src="./public/blogs/<%= blog.image %>" /> <input type="hidden" name="id"
-                            value="<%= blog._id %>" />
+                        <img src="./public/blogs/<%= blog.image %>" /> 
+                        <input type="hidden" name="id" value="<%= blog._id %>" />
                         <div class="like ">
                             <h6 class="text-muted post gapping">posted by- <%=blog.username %></h6>
                             <i class="fa fa-heart likeicon gapping" aria-hidden="true"><%=blog.likes %></i>

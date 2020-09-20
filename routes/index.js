@@ -7,6 +7,7 @@ var contestModule = require("../models/contests");
 var router = express.Router();
 var session = require("express-session");
 var bcrypt = require("bcryptjs");
+const moment = require('moment');
 var path = require("path");
 var multer = require("multer");
 var Storage = multer.diskStorage({
@@ -171,7 +172,7 @@ router.get("/blog/:id", (req, res, next) => {
   var blogg = blogModule.find({ _id: id });
   blogg.exec((err, data) => {
     // console.log(data);
-    res.render("Home/blog", { blog: data[0], isloggedin: isloggedin });
+    res.render("Home/blog", { blog: data[0], isloggedin: isloggedin, moment:moment });
   });
 });
 
