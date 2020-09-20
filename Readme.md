@@ -11,6 +11,9 @@ or you can download the zip folder of the code.
 
 #what to do after cloning or downloading the code-
 
+create .env file under the womenhub folder tree and paste your database cluster link
+DATABASE=mongodb+srv://<usesrname>:<password>@cluster0.gt4ey.gcp.mongodb.net/<dbname>?retryWrites=true&w=majority
+
 =>open the folder womenhub with vscode or whichever ide you prefer.
 =>in the terminal run command 
   npm install
