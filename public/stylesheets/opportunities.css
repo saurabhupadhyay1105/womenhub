@@ -20,6 +20,8 @@
 
 .opty-cards-proto{
     margin-top: 25px;
+    box-shadow: 0 0 15px 4px rgba(110, 110, 110, 0.200);
+    background-color: white !important;
 }
 
 
@@ -29,6 +31,7 @@
 
 .opty-cards-proto .view-button{
     margin-top: 20px;
+    
 }
 
 .opty-nav-wrapper{
@@ -40,3 +43,11 @@
     color: white;
 }
 
+.internship-wrapper .card{
+    background-color: #fcb8c0;
+}
+
+.opty-cards-proto .view-button button{
+    background-color: #743c5c;
+    color:white;
+}
