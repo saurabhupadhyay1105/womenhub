@@ -28,7 +28,7 @@
 .opty-cards-proto{
     margin-top: 25px;
     border: 0px;
-    box-shadow: 0 0 15px 4px rgba(110, 110, 110, 0.200);
+    box-shadow: 0 0 10px 4px rgba(110, 110, 110, 0.200);
     background-color: f5f5f5 !important;
     border-radius: 10px;
 }
@@ -77,6 +77,10 @@
 }
 
 .navbtn:hover{
-    box-shadow: 0 0 10px 2px rgba(110, 110, 110, 0.400);
+    box-shadow: 0 0 5px 2px rgba(110, 110, 110, 0.500);
+}
+
+.navbtn:active{
+    box-shadow: 0 0 5px 2px rgba(110, 110, 110, 0.500);
 }
 
