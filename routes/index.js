@@ -206,7 +206,7 @@ router.get("/opportunities", (req, res, next) => {
   opps.exec((err, data) => {
     if (err) throw err;
     console.log(data);
-    res.render("Home/opportunities", { jobs: data, isloggedin: isloggedin });
+    res.render("Home/opportunities", { jobs: data, isloggedin: isloggedin, moment:moment });
   });
 });
 router.get("/jobs/:id", (req, res, next) => {
@@ -226,7 +226,7 @@ router.get("/jobs/:id", (req, res, next) => {
   opps.exec((err, data) => {
     if (err) throw err;
     console.log(data);
-    res.render("Home/opportunities", { jobs: data, isloggedin: isloggedin });
+    res.render("Home/opportunities", { jobs: data, isloggedin: isloggedin, moment:moment });
   });
 });
 
@@ -243,6 +243,7 @@ router.get("/opportunity/:id", (req, res, next) => {
     res.render("Home/opportunity", {
       opportunity: data,
       isloggedin: isloggedin,
+      moment:moment
     });
   });
 });
