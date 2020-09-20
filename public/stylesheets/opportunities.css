@@ -1,6 +1,6 @@
 .internship-wrapper{
     margin-top: 100px;
-    margin-bottom: 100px;
+    margin-bottom: 100px; 
 }
 
 .internship-wrapper .card-title{
@@ -32,10 +32,11 @@
 }
 
 .opty-nav-wrapper{
-    background-color: #fabea7;
+    background-color: #e0dede;
     border-radius: 5px;
 }
 
 .nav-button-wrapper .active a{
     color: white;
 }
+

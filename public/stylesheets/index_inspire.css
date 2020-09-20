@@ -33,6 +33,14 @@
     font-size: 2em;
 }
 
+.main-button{
+    background-color: #743c5c;
+}
+
+.main-button:hover{
+    background-color: #743c5c;
+}
+
 @media screen and (max-width:768px){
 
 
