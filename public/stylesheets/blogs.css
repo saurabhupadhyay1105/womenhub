@@ -2,15 +2,13 @@
 
 .gapping { margin-top:20px; }
 
-.blocklines {
-  display: block;
-  display: -webkit-box;
-  max-width: 100%;
-  margin-top: 25px;
-  -webkit-line-clamp: 4;
-  -webkit-box-orient: vertical;
+p {
   overflow: hidden;
   text-overflow: ellipsis;
+  display: -webkit-box;
+  /* The number of lines to be displayed */
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
 }
 
 .container{
