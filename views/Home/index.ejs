@@ -7,32 +7,32 @@
     <!-- Three columns of text below the carousel -->
     <div class="inspire-heading">
       <h2>Opportunities</h2>
-      <a class="btn btn-secondary main-button " href="#" role="button">View All &raquo;</a>
+      <a class="btn btn-secondary main-button " href="/opportunities" role="button">View All &raquo;</a>
     </div>
 
     <div class="row">
       
       <div class="col-lg-4">
         <div class="contest-card">
-          <h2>Heading</h2>
-          <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna.</p>
-          <p><a class="btn btn-secondary main-button " href="#" role="button">View details &raquo;</a></p>
+          <h2><%- jobs[0].title%></h2>
+          <p><%- jobs[0].description%></p>
+          <p><a class="btn btn-secondary main-button " href="/opportunity/<%- jobs[0]._id%>" role="button">View details &raquo;</a></p>
         </div>
       </div>
 
       <div class="col-lg-4">
         <div class="contest-card">
-           <h2>Heading</h2>
-          <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna.</p>
-          <p><a class="btn btn-secondary main-button" href="#" role="button">View details &raquo;</a></p>
+          <h2><%- jobs[1].title%></h2>
+          <p><%- jobs[1].description%></p>
+          <p><a class="btn btn-secondary main-button " href="/opportunity/<%- jobs[1]._id%>" role="button">View details &raquo;</a></p>
         </div>
       </div>
 
       <div class="col-lg-4">
         <div class="contest-card">
-          <h2>Heading</h2>
-          <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna.</p>
-          <p><a class="btn btn-secondary main-button " href="#" role="button">View details &raquo;</a></p>
+          <h2><%- jobs[2].title%></h2>
+          <p><%- jobs[2].description%></p>
+          <p><a class="btn btn-secondary main-button " href="/opportunity/<%- jobs[2]._id%>" role="button">View details &raquo;</a></p>
         </div>
       </div>
 
@@ -44,7 +44,7 @@
 
     <div class="inspire-heading">
       <h2>Get Inspired</h2>
-      <a class="btn btn-secondary main-button" href="#" role="button">View All &raquo;</a>
+      <a class="btn btn-secondary main-button" href="/blogs" role="button">View All &raquo;</a>
     </div>
 
     <div class="row opportunities-card">
@@ -60,14 +60,9 @@
         </div>
 
         <div class="col-md-7 order-md-1">
-          <h2 class="featurette-heading">First featurette heading. 
-            <span class="text-muted">It’ll blow your mind.</span>
-          </h2>
-          <p class="lead par-oppotunities">Donec ullamcorper nulla non metus auctor fringilla.
-            Vestibulum id ligula porta felis euismod semper. 
-            Praesent commodo cursus magna, vel scelerisque nisl consectetur.
-             Fusce dapibus, tellus ac cursus commodo.</p>
-             <p><a class="btn btn-secondary main-button" href="#" role="button">Read More</a></p>
+          <h2 class="featurette-heading"><%- blogs[0].title%></h2>
+          <p class="lead par-oppotunities"><%- blogs[0].body%></p>
+          <p><a class="btn btn-secondary main-button" href="/blog/<%= blogs[0]._id%>" role="button">Read More</a></p>
         
         </div>
        
@@ -86,14 +81,9 @@
         </div>
 
         <div class="col-md-7 order-md-1">
-          <h2 class="featurette-heading">First featurette heading. 
-            <span class="text-muted">It’ll blow your mind.</span>
-          </h2>
-          <p class="lead par-oppotunities">Donec ullamcorper nulla non metus auctor fringilla.
-            Vestibulum id ligula porta felis euismod semper. 
-            Praesent commodo cursus magna, vel scelerisque nisl consectetur.
-             Fusce dapibus, tellus ac cursus commodo.</p>
-             <p><a class="btn btn-secondary main-button" href="#" role="button">Read More</a></p>
+          <h2 class="featurette-heading"><%- blogs[1].title%></h2>
+          <p class="lead par-oppotunities"><%- blogs[1].body%></p>
+          <p><a class="btn btn-secondary main-button" href="/blog/<%= blogs[1]._id%>" role="button">Read More</a></p>
         
         </div>
        
@@ -112,14 +102,9 @@
         </div>
 
         <div class="col-md-7 order-md-1">
-          <h2 class="featurette-heading">First featurette heading. 
-            <span class="text-muted">It’ll blow your mind.</span>
-          </h2>
-          <p class="lead par-oppotunities">Donec ullamcorper nulla non metus auctor fringilla.
-            Vestibulum id ligula porta felis euismod semper. 
-            Praesent commodo cursus magna, vel scelerisque nisl consectetur.
-             Fusce dapibus, tellus ac cursus commodo.</p>
-             <p><a class="btn btn-secondary main-button" href="#" role="button">Read More</a></p>
+          <h2 class="featurette-heading"><%- blogs[2].title%></h2>
+          <p class="lead par-oppotunities"><%- blogs[2].body%></p>
+          <p><a class="btn btn-secondary main-button" href="/blog/<%= blogs[2]._id%>" role="button">Read More</a></p>
         
         </div>
        
@@ -127,25 +112,33 @@
 
 
     <div class="inspire-heading">
-      <h2>Contest</h2>
+      <h2>Contests</h2>
       <a class="btn btn-secondary main-button" href="#" role="button">View All &raquo;</a>
     </div>
 
-    <div class="row">
+    <div class="row mb-5">
       
-      <div class="col-lg-6">
+      <div class="col-lg-4">
         <div class="contest-card">
-          <h2>Heading</h2>
-          <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna.</p>
-          <p><a class="btn btn-secondary main-button" href="#" role="button">View details &raquo;</a></p>
+          <h2><%- contests[0].title%></h2>
+          <p><%- contests[0].summary%></p>
+          <p><a class="btn btn-secondary main-button" href="/contest/<%- contests[0]._id%>" role="button">View details &raquo;</a></p>
         </div>
       </div>
 
-      <div class="col-lg-6">
+      <div class="col-lg-4">
         <div class="contest-card">
-          <h2>Heading</h2>
-          <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna.</p>
-          <p><a class="btn btn-secondary main-button" href="#" role="button">View details &raquo;</a></p>
+          <h2><%- contests[1].title%></h2>
+          <p><%- contests[1].summary%></p>
+          <p><a class="btn btn-secondary main-button" href="/contest/<%- contests[1]._id%>" role="button">View details &raquo;</a></p>
+        </div>
+      </div>
+
+      <div class="col-lg-4">
+        <div class="contest-card">
+          <h2><%- contests[2].title%></h2>
+          <p><%- contests[2].summary%></p>
+          <p><a class="btn btn-secondary main-button" href="/contest/<%- contests[2]._id%>" role="button">View details &raquo;</a></p>
         </div>
       </div>
     </div>

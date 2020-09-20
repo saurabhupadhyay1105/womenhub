@@ -23,13 +23,23 @@ var upload = multer({
 
 /* GET home page. */
 router.get("/", function (req, res, next) {
-  if (req.session.uniqueId) {
-    var username = req.session.user.username;
-    res.render("Home/index", { isloggedin: username });
-  } else {
-    res.render("Home/index", { isloggedin: "login/register" });
-  }
+  blogModule.find({}).exec((err, data) => {
+    if(err) throw err;
+    jobModule.find({}).exec((err, data1) => {
+      if(err) throw err;
+      contestModule.find({}).exec((err, data2) =>{
+        if(err) throw err;
+        if (req.session.uniqueId) {
+          var username = req.session.user.username;
+          res.render("Home/index", { isloggedin: username, blogs: data, jobs: data1, contests: data2 });
+        } else {
+          res.render("Home/index", { isloggedin: "login/register", blogs: data, jobs: data1, contests: data2 });
+        }
+      });
+    });
+  });
 });
+
 
 //Get login Page
 router.get("/login", (req, res, next) => {
