@@ -4,17 +4,6 @@
 
 <%- include header.ejs %>
 <style>
-  .btnRegister {
-    float: left;
-    border: none;
-    border-radius: 1.5rem;
-    padding: 2%;
-    background: #e0dede;
-    color: #fff;
-    font-weight: 600;
-    width: 30%;
-    cursor: pointer;
-  }
 </style>
 <div class="container mt-5 mb-5 pt-5 pb-5">
   <div class="row opportunities-card">
@@ -22,12 +11,12 @@
 
 
     <div class="col-md-10 order-md-2">
-      <h2 class="featurette-heading mt-4"><%=contest.title %></h2>
-      <p>
+      <h1 class="featurette-heading mt-1 mb-5 "><%=contest.title %></h1>
+      <p >
         <%-contest.summary %>
       </p>
       <div class="row justify-content-center view-button">
-        <div class="col-12 d-flex">
+        <div class="col-12 d-flex mt-5 pt-5">
             <a href="<%= contest.applylink %>"><button type="button"
                     class="btn btn-success">Apply</button></a>
             <a href="/contests"><button type="button"

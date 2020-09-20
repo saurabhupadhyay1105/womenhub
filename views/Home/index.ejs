@@ -1,38 +1,46 @@
 <%- include header.ejs %>
 
 <%- include banner.ejs %>
+<style>
+  @media only screen and (max-width: 600px) {
+  img {
+    width: 27vh;
+    height: 27vh;
+  }
+}
+</style>
 <link rel="stylesheet" href="/public/stylesheets/index_inspire.css">
   <div class="container marketing">
   
     <!-- Three columns of text below the carousel -->
     <div class="inspire-heading">
       <h2>Opportunities</h2>
-      <a class="btn btn-secondary main-button " href="#" role="button">View All &raquo;</a>
+      <a class="btn btn-secondary main-button " href="/opportunities" role="button">View All &raquo;</a>
     </div>
 
     <div class="row">
       
       <div class="col-lg-4"> 
         <div class="contest-card">
-          <h2>Heading</h2>
-          <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna.</p>
-          <p><a class="btn btn-secondary main-button " href="#" role="button">View details &raquo;</a></p>
+          <h2><%- jobs[0].title%></h2>
+          <p><%- jobs[0].description%></p>
+          <p><a class="btn btn-secondary main-button " href="/opportunity/<%- jobs[0]._id%>" role="button">View details &raquo;</a></p>
         </div>
       </div>
 
       <div class="col-lg-4">
         <div class="contest-card">
-           <h2>Heading</h2>
-          <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna.</p>
-          <p><a class="btn btn-secondary main-button" href="#" role="button">View details &raquo;</a></p>
+          <h2><%- jobs[1].title%></h2>
+          <p><%- jobs[1].description%></p>
+          <p><a class="btn btn-secondary main-button " href="/opportunity/<%- jobs[1]._id%>" role="button">View details &raquo;</a></p>
         </div>
       </div>
 
       <div class="col-lg-4">
         <div class="contest-card">
-          <h2>Heading</h2>
-          <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna.</p>
-          <p><a class="btn btn-secondary main-button " href="#" role="button">View details &raquo;</a></p>
+          <h2><%- jobs[2].title%></h2>
+          <p><%- jobs[2].description%></p>
+          <p><a class="btn btn-secondary main-button " href="/opportunity/<%- jobs[2]._id%>" role="button">View details &raquo;</a></p>
         </div>
       </div>
 
@@ -44,30 +52,19 @@
 
     <div class="inspire-heading">
       <h2>Get Inspired</h2>
-      <a class="btn btn-secondary main-button" href="#" role="button">View All &raquo;</a>
+      <a class="btn btn-secondary main-button" href="/blogs" role="button">View All &raquo;</a>
     </div>
 
     <div class="row opportunities-card">
 
-        <div class="col-md-5 order-md-2">
-          <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" 
-            width="300" height="300" xmlns="http://www.w3.org/2000/svg" aria-label="Placeholder: 500x500" 
-            preserveAspectRatio="xMidYMid slice" role="img" focusable="false">
-            <title>Placeholder</title><rect width="100%" height="100%" fill="#eee"/>
-            <text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text>
-          </svg>
-  
+        <div class="col-md-4 order-md-2">
+          <img src="/public/blogs/<%= blogs[0].image %>" alt="<%- blogs[0].title%>" style="border-radius: 10px;" width="380" height="300">
         </div>
 
-        <div class="col-md-7 order-md-1">
-          <h2 class="featurette-heading">First featurette heading. 
-            <span class="text-muted">It’ll blow your mind.</span>
-          </h2>
-          <p class="lead par-oppotunities">Donec ullamcorper nulla non metus auctor fringilla.
-            Vestibulum id ligula porta felis euismod semper. 
-            Praesent commodo cursus magna, vel scelerisque nisl consectetur.
-             Fusce dapibus, tellus ac cursus commodo.</p>
-             <p><a class="btn btn-secondary main-button" href="#" role="button">Read More</a></p>
+        <div class="col-md-8 order-md-1">
+          <h2 class="featurette-heading"><%- blogs[0].title%></h2>
+          <p class="lead par-oppotunities"><%- blogs[0].body%></p>
+          <p><a class="btn btn-secondary main-button" href="/blog/<%= blogs[0]._id%>" role="button">Read More</a></p>
         
         </div>
        
@@ -75,25 +72,14 @@
 
       <div class="row opportunities-card">
 
-        <div class="col-md-5 order-md-2">
-          <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" 
-            width="300" height="300" xmlns="http://www.w3.org/2000/svg" aria-label="Placeholder: 500x500" 
-            preserveAspectRatio="xMidYMid slice" role="img" focusable="false">
-            <title>Placeholder</title><rect width="100%" height="100%" fill="#eee"/>
-            <text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text>
-          </svg>
-  
+        <div class="col-md-4 order-md-2">
+          <img src="/public/blogs/<%= blogs[1].image %>" alt="<%- blogs[1].title%>" style="border-radius: 10px;" width="380" height="300">
         </div>
 
-        <div class="col-md-7 order-md-1">
-          <h2 class="featurette-heading">First featurette heading. 
-            <span class="text-muted">It’ll blow your mind.</span>
-          </h2>
-          <p class="lead par-oppotunities">Donec ullamcorper nulla non metus auctor fringilla.
-            Vestibulum id ligula porta felis euismod semper. 
-            Praesent commodo cursus magna, vel scelerisque nisl consectetur.
-             Fusce dapibus, tellus ac cursus commodo.</p>
-             <p><a class="btn btn-secondary main-button" href="#" role="button">Read More</a></p>
+        <div class="col-md-8 order-md-1">
+          <h2 class="featurette-heading"><%- blogs[1].title%></h2>
+          <p class="lead par-oppotunities"><%- blogs[1].body%></p>
+          <p><a class="btn btn-secondary main-button" href="/blog/<%= blogs[1]._id%>" role="button">Read More</a></p>
         
         </div>
        
@@ -101,25 +87,14 @@
 
       <div class="row opportunities-card">
 
-        <div class="col-md-5 order-md-2">
-          <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" 
-            width="300" height="300" xmlns="http://www.w3.org/2000/svg" aria-label="Placeholder: 500x500" 
-            preserveAspectRatio="xMidYMid slice" role="img" focusable="false">
-            <title>Placeholder</title><rect width="100%" height="100%" fill="#eee"/>
-            <text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text>
-          </svg>
-  
+        <div class="col-md-4 order-md-2">
+          <img src="/public/blogs/<%= blogs[2].image %>" alt="<%- blogs[2].title%>" style="border-radius: 10px;" width="380" height="300">
         </div>
 
-        <div class="col-md-7 order-md-1">
-          <h2 class="featurette-heading">First featurette heading. 
-            <span class="text-muted">It’ll blow your mind.</span>
-          </h2>
-          <p class="lead par-oppotunities">Donec ullamcorper nulla non metus auctor fringilla.
-            Vestibulum id ligula porta felis euismod semper. 
-            Praesent commodo cursus magna, vel scelerisque nisl consectetur.
-             Fusce dapibus, tellus ac cursus commodo.</p>
-             <p><a class="btn btn-secondary main-button" href="#" role="button">Read More</a></p>
+        <div class="col-md-8 order-md-1">
+          <h2 class="featurette-heading"><%- blogs[2].title%></h2>
+          <p class="lead par-oppotunities"><%- blogs[2].body%></p>
+          <p><a class="btn btn-secondary main-button" href="/blog/<%= blogs[2]._id%>" role="button">Read More</a></p>
         
         </div>
        
@@ -127,25 +102,33 @@
 
 
     <div class="inspire-heading">
-      <h2>Contest</h2>
-      <a class="btn btn-secondary main-button" href="#" role="button">View All &raquo;</a>
+      <h2>Contests</h2>
+      <a class="btn btn-secondary main-button" href="/contests" role="button">View All &raquo;</a>
     </div>
 
-    <div class="row">
+    <div class="row mb-5">
       
-      <div class="col-lg-6">
+      <div class="col-lg-4">
         <div class="contest-card">
-          <h2>Heading</h2>
-          <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna.</p>
-          <p><a class="btn btn-secondary main-button" href="#" role="button">View details &raquo;</a></p>
+          <h2><%- contests[0].title%></h2>
+          <p><%- contests[0].summary%></p>
+          <p><a class="btn btn-secondary main-button" href="/contest/<%- contests[0]._id%>" role="button">View details &raquo;</a></p>
         </div>
       </div>
 
-      <div class="col-lg-6">
+      <div class="col-lg-4">
         <div class="contest-card">
-          <h2>Heading</h2>
-          <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna.</p>
-          <p><a class="btn btn-secondary main-button" href="#" role="button">View details &raquo;</a></p>
+          <h2><%- contests[1].title%></h2>
+          <p><%- contests[1].summary%></p>
+          <p><a class="btn btn-secondary main-button" href="/contest/<%- contests[1]._id%>" role="button">View details &raquo;</a></p>
+        </div>
+      </div>
+
+      <div class="col-lg-4">
+        <div class="contest-card">
+          <h2><%- contests[2].title%></h2>
+          <p><%- contests[2].summary%></p>
+          <p><a class="btn btn-secondary main-button" href="/contest/<%- contests[2]._id%>" role="button">View details &raquo;</a></p>
         </div>
       </div>
     </div>
