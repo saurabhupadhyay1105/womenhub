@@ -21,7 +21,7 @@
                     <div class="card-body">
                         <h4 style="text-transform: capitalize;"><%= blog.title %></h4>
                         <p class="card-text blocklines ">
-                            <%- blog.body %>
+                            <%- blog.body.slice(0,700) %>
                         </p>
                         <input type="hidden" name="id" value="<%= blog._id %>" />
                         <div class="like ">
