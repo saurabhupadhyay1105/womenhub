@@ -3,6 +3,10 @@
     margin-bottom: 100px; 
 }
 
+.opportunities-heading{
+  color: #767c77;
+}
+
 .internship-wrapper .card-title{
     text-align: center;
 }
@@ -51,3 +55,4 @@
     background-color: #743c5c;
     color:white;
 }
+
