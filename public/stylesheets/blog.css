@@ -1,13 +1,9 @@
-.singleblog-wrapper{
-    margin-top: 50px;
-}
-
 body {
     background-color: #fafafa;
 }
 
 .singleblog-wrapper{
-    margin-top: 150px;
+    margin-top: 50px;
     margin-bottom: 100px;
 }
 
@@ -60,5 +56,10 @@ body {
     .singleblog-wrapper p{
         font-size: 16px;
     }
+}
+
+img{
+    max-width: 100%;
+    border-radius: 10px;
 }
 
