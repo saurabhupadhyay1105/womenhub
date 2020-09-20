@@ -1,4 +1,5 @@
 var express = require("express");
+var express = require("express");
 var userModule = require("../models/users");
 var blogModule = require("../models/blogs");
 var jobModule = require("../models/jobs");
@@ -6,6 +7,19 @@ var contestModule = require("../models/contests");
 var router = express.Router();
 var session = require("express-session");
 var bcrypt = require("bcryptjs");
+const moment = require('moment');
+var path = require("path");
+var multer = require("multer");
+var Storage = multer.diskStorage({
+  destination: "./public/blogs/",
+  filename: (req, file, cb) => {
+    console.log(path.extname(file.originalname));
+    cb(null, file.fieldname + "_" + Date.now + path.extname(file.originalname));
+  },
+});
+var upload = multer({
+  storage: Storage,
+}).single("file");
 
 /* GET home page. */
 router.get("/", function (req, res, next) {
@@ -137,52 +151,99 @@ router.get("/logout", function (req, res, next) {
 router.get("/blogs", function (req, res, next) {
   blogModule.find({}).exec((err, data) => {
     if (err) throw err;
-    console.log(data);
-    res.render("Home/blogs", { blogs: data });
+    // console.log(data);
+    if (req.session.uniqueId) {
+      var username = req.session.user.username;
+      // console.log(username);
+      res.render("Home/blogs", { blogs: data, isloggedin: username });
+    } else {
+      res.render("Home/blogs", { blogs: data, isloggedin: "login/register" });
+    }
   });
 });
 
 //Get a Blog
-router.get("/blogs/:id", (req, res, next) => {
+router.get("/blog/:id", (req, res, next) => {
+  var opps = jobModule.find({});
+  if (req.session.uniqueId) {
+    var isloggedin = req.session.user.username;
+  } else var isloggedin = "login/register";
   var id = req.params.id;
   var blogg = blogModule.find({ _id: id });
   blogg.exec((err, data) => {
-    console.log(data);
-    res.render("Home/blog", { blog: data[0] });
+    // console.log(data);
+    res.render("Home/blog", { blog: data[0], isloggedin: isloggedin, moment:moment });
   });
 });
 
 // Create a new blog
-router.post("/createblog", (req, res, next) => {
+router.post("/createblog", upload, (req, res, next) => {
   var { title, body } = req.body;
+  var image = req.file.filename;
   var username = req.session.user.username;
-  var blog = new blogModule({ title, body, username });
-  blog.save((err, exec) => {
+  var blog = new blogModule({ title, body, username, image });
+  // console.log(blog);
+  blog.save((err, data) => {
     if (err) throw err;
-    res.render("Home/blogs");
+    res.redirect(`/blog/${data._id}`);
   });
 });
 
 //Delete a blog
-router.get("/opportunities/delete/:id", (req, res, next) => {
+router.get("/blog/delete/:id", (req, res, next) => {
   var id = req.params.id;
   blogModule.findByIdAndDelete(id).exec((err, data) => {
-    res.render("Home/index");
+    res.redirect("/users/blogs");
   });
 });
 
 //Get Jobs/Internships page
 router.get("/opportunities", (req, res, next) => {
-  res.render("Home/opportunities");
+  var opps = jobModule.find({});
+  if (req.session.uniqueId) {
+    var isloggedin = req.session.user.username;
+  } else var isloggedin = "login/register";
+  opps.exec((err, data) => {
+    if (err) throw err;
+    console.log(data);
+    res.render("Home/opportunities", { jobs: data, isloggedin: isloggedin });
+  });
+});
+router.get("/jobs/:id", (req, res, next) => {
+  if (req.session.uniqueId) {
+    var isloggedin = req.session.user.username;
+  } else var isloggedin = "login/register";
+  var id = req.params.id;
+  var jobtype;
+  if (id == "01") {
+    jobtype = "Software Engineering";
+  } else if (id == "02") {
+    jobtype = "Digital Marekting";
+  } else if (id == "03") {
+    jobtype = "Human Resources";
+  }
+  var opps = jobModule.find({ category: jobtype });
+  opps.exec((err, data) => {
+    if (err) throw err;
+    console.log(data);
+    res.render("Home/opportunities", { jobs: data, isloggedin: isloggedin });
+  });
 });
 
 //Get a Job/Internship page
-router.get("/opportunities/:id", (req, res, next) => {
+router.get("/opportunity/:id", (req, res, next) => {
+  if (req.session.uniqueId) {
+    var isloggedin = req.session.user.username;
+  } else var isloggedin = "login/register";
   var id = req.params.id;
   var opp = jobModule.findById(id);
   opp.exec((err, data) => {
     if (err) throw err;
-    res.render("Home/opportunity", { opportunity: data[0] });
+    console.log(data);
+    res.render("Home/opportunity", {
+      opportunity: data,
+      isloggedin: isloggedin,
+    });
   });
 });
 
@@ -209,7 +270,7 @@ router.post("/createjob", (req, res, next) => {
   });
   job.save((err, exec) => {
     if (err) throw err;
-    res.send("jobcreated");
+    res.redirect(`/opportunity/${data._id}`);
   });
 });
 
@@ -217,22 +278,30 @@ router.post("/createjob", (req, res, next) => {
 router.get("/opportunities/delete/:id", (req, res, next) => {
   var id = req.params.id;
   jobModule.findByIdAndDelete(id).exec((err, data) => {
-    res.render("Home/index");
+    res.redirect("/users/job");
   });
 });
 
 // Get all contests
 router.get("/contests", (req, res, next) => {
-  res.render("Home/contests");
+  if (req.session.uniqueId) {
+    var isloggedin = req.session.user.username;
+  } else var isloggedin = "login/register";
+  contestModule.find({}).exec((err, data) => {
+    res.render("Home/contests", { contests: data, isloggedin: isloggedin });
+  });
 });
 
 // Get a contest
-router.get("/contests/:id", (req, res, next) => {
+router.get("/contest/:id", (req, res, next) => {
   var id = req.params.id;
+  if (req.session.uniqueId) {
+    var isloggedin = req.session.user.username;
+  } else var isloggedin = "login/register";
   var cont = contestModule.findById(id);
   cont.exec((err, data) => {
     if (err) throw err;
-    res.render("Home/contest", { contest: data[0] });
+    res.render("Home/contest", { contest: data, isloggedin: isloggedin });
   });
 });
 
@@ -242,17 +311,18 @@ router.post("/createcontest", (req, res, next) => {
   var username = req.session.user.username;
 
   var contest = new contestModule({ title, summary, applylink, username });
-  contest.save((err, exec) => {
+  contest.save((err, data) => {
     if (err) throw err;
-    res.send("contestcreated");
+    console.log(data._id);
+    res.redirect(`/contest/${data._id}`);
   });
 });
 
 //Delete a contest
-router.get("/opportunities/delete/:id", (req, res, next) => {
+router.get("/contest/delete/:id", (req, res, next) => {
   var id = req.params.id;
   contestModule.findByIdAndDelete(id).exec((err, data) => {
-    res.render("Home/index");
+    res.redirect("/users/contest");
   });
 });
 

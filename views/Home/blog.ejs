@@ -8,43 +8,30 @@
         <div class="col-sm-8">
             <div class="card">
                 <div class="card-body">
-                    <div class="card-title">
+                    <img src="/public/blogs/<%= blog.image %>" />
 
-                        <h3><%= blog.title %></h3>
-
-                    </div>
+                    <h2 class="mt-4"><%= blog.title %></h2>
                     <div class="card-subtitle">
-                        <a class="btn" href="#">
-                            <h5>
-
-                               <%= blog.username%>
-
-                            </h5>
-                            <h5>
-                                22aug, 2019
-                            </h5>
-                        </a>
-
-                        <i class="fa fa-share" aria-hidden="true"></i>
-                        <i class="far fa-heart" aria-hidden="true">5</i>
-                        <!-- use class fa fa-heart for solid filled heart -->
-                        
+                    <a style="text-decoration:none;" href="/users/<%= blog.username%>">
+                        <h6><%= blog.username%></h6>
+                    </a>
+                        <h6><%=moment(blog.date).format('DD-MMM-YYYY') %></h6>
                     </div>
-                    <div class="card-text">
+                    <div class="card-text mt-4">
                         <p>
 
-                        <%- blog.body %>
+                            <%- blog.body %>
 
-                         
+
 
                         </p>
                     </div>
 
-                    <i class="fa fa-share" aria-hidden="true"></i>
+                    <!-- <i class="fa fa-share" aria-hidden="true"></i>
 
-                    <i class="far fa-heart buttom-icon" aria-hidden="true"><%= blog.likes %></i>
+                    <i class="far fa-heart buttom-icon" aria-hidden="true"><%= blog.likes %></i> -->
 
-                    
+
                 </div>
             </div>
         </div>
@@ -53,6 +40,3 @@
 
 
 <%- include footer.ejs %>
-
-<%- include footer.ejs %>
-

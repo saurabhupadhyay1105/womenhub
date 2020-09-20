@@ -1,3 +1,45 @@
 <%- include header.ejs %>
-<h1>Opportunity</h1>
+
+<head>
+    <link rel="stylesheet" href="/public/stylesheets/opportunity.css">
+</head>
+<div class="container opty-wrapper">
+    <div class="row justify-content-center">
+        <div class="col-sm-8">
+            <div class="card card-wrapper">
+                <div class="card-body">
+                    <div class="card-title">
+                        <h4><%= opportunity.title %></h4>
+                    </div>
+
+                    <div class="card-subtitle">
+                        <h5 class="formargin"><%= opportunity.company %></h5>
+                    </div>
+
+                    <div class="card-subtitle">
+                        <h5><%= opportunity.type %></h5>
+                    </div>
+
+                    <div class="card-subtitle posted-by-margin">
+                        <span>posted by</span><span><%= opportunity.username %></span>
+                        <span style="float: right;">5 august, 1999</span>
+                    </div>
+
+                    <div class="card-text ">
+                        <p>
+                            <%- opportunity.description %>
+                        </p>
+                    </div>
+
+                    <div class="row justify-content-center view-button">
+                        <div class="col-12">
+                            <a href="<%= opportunity.applylink %>"><button type="button"
+                                    class="btn btn-danger">apply</button></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 <%- include footer.ejs %>

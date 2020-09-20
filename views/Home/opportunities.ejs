@@ -1,6 +1,7 @@
 <%- include header.ejs %>
+
 <head>
-    <link rel="stylesheet" href="/public/stylesheets/opportunities.css"
+    <link rel="stylesheet" href="/public/stylesheets/opportunities.css">
 </head>
 <div class="container-fluid internship-wrapper">
     <div class="row justify-content-center">
@@ -13,107 +14,74 @@
                     <div class="card-subtitle">
                         <div class="row">
                             <nav class="navbar navbar-expand-lg navbar-light opty-nav-wrapper">
-                                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
-                                  <span class="navbar-toggler-icon"></span>
+                                <button class="navbar-toggler" type="button" data-toggle="collapse"
+                                    data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03"
+                                    aria-expanded="false" aria-label="Toggle navigation">
+                                    <span class="navbar-toggler-icon"></span>
                                 </button>
-                                <h3 style="float: right;" class="d-block d-sm-none d-none d-sm-block d-md-none d-none d-md-block d-lg-none">womenhub</h3>
+                                <h3 style="float: right;"
+                                    class="d-block d-sm-none d-none d-sm-block d-md-none d-none d-md-block d-lg-none">
+                                    womenhub</h3>
                                 <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
-                                  <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-                                    <li class="nav-item ">
-                                      <a class="nav-link active" href="#">first option</a>
-                                    </li>
-                                    <li class="nav-item">
-                                      <a class="nav-link" href="#">second option</a>
-                                    </li>
-                                    <li class="nav-item">
-                                      <a class="nav-link " href="#">third option</a>
-                                    </li>
-                                  </ul>
+                                    <ul class="navbar-nav mr-auto mt-2 mt-lg-0 nav-button-wrapper">
+                                        <li class="nav-item ">
+                                            <a class="nav-link active" href="/jobs/01">Software Engineer</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="/jobs/02">Digital Marketing</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link " href="/jobs/03">H.R</a>
+                                        </li>
+                                    </ul>
                                 </div>
-                              </nav>
+                            </nav>
                         </div>
                     </div>
-<!-- whatever is written down should be rendered 
+                    <!-- whatever is written down should be rendered 
 according to the type we have selected u can 
 give it a id or anything i am just making the cards, lets say it is rendered when we have selected "all" -->
+
+                    <% if(jobs.length>0){ jobs.forEach(job=>{ %>
                     <div class="card-text">
                         <div class="row">
                             <div class="col-sm-4">
                                 <div class="card opty-cards-proto">
                                     <div class="card-body">
                                         <div class="card-title">
-                                            <h4>Name of job/internship</h4>
+                                            <h4><%= job.title %></h4>
                                         </div>
-                                        
+
                                         <div class="card-subtitle">
-                                            <h5 class="company-margin">company name</h5>
+                                            <h5 class="for-space"><%= job.company %></h5>
                                         </div>
-            
+
                                         <div class="card-subtitle">
-                                            <h5>type of opportnity</h5>
+                                            <h5><%= job.type %></h5>
+                                        </div>
+
+                                        <div class="card-subtitle for-space">
+                                            <span>posted by</span><span> <%= job.username %></span>
+                                            <h6>5 august, 1999</h6>
                                         </div>
 
                                         <div class="row justify-content-center view-button">
                                             <div class="col-12">
-                                                <a href="./blogs.ejs"><button type="button" class="btn btn-danger">View details</button></a>
+                                                <a href="/opportunity/<%= job._id %>"><button type="button"
+                                                        class="btn btn-danger">View
+                                                        details</button></a>
                                             </div>
                                         </div>
-                                    </div>  
+                                    </div>
                                 </div>
                             </div>
 
-                            <div class="col-sm-4">
-                                <div class="card opty-cards-proto">
-                                    <div class="card-body">
-                                        <div class="card-title">
-                                            <h4>Name of job/internship</h4>
-                                        </div>
-                                        
-                                        <div class="card-subtitle">
-                                            <h5 class="company-margin">company name</h5>
-                                        </div>
-            
-                                        <div class="card-subtitle">
-                                            <h5>type of opportnity</h5>
-                                        </div>
 
-                                        <div class="row justify-content-center view-button">
-                                            <div class="col-12">
-                                                <a href="./blogs.ejs"><button type="button" class="btn btn-danger">View details</button></a>
-                                            </div>
-                                        </div>
-                                    </div>  
-                                </div>
-                            </div>
-                            
-                            <div class="col-sm-4">
-                                <div class="card opty-cards-proto">
-                                    <div class="card-body">
-                                        <div class="card-title">
-                                            <h4>Name of job/internship</h4>
-                                        </div>
-                                        
-                                        <div class="card-subtitle">
-                                            <h5 class="company-margin">company name</h5>
-                                        </div>
-            
-                                        <div class="card-subtitle">
-                                            <h5>type of opportnity</h5>
-                                        </div>
-
-                                        <div class="row justify-content-center view-button">
-                                            <div class="col-12">
-                                                <a href="./blogs.ejs"><button type="button" class="btn btn-danger">View details</button></a>
-                                            </div>
-                                        </div>
-                                    </div>  
-                                </div>
-                            </div>
                         </div>
-                        
-                    </div>
 
-                    
+                    </div>
+                    <%})}%>
+
                 </div>
             </div>
         </div>
