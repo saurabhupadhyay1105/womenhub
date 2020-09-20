@@ -161,11 +161,9 @@ router.get("/logout", function (req, res, next) {
 router.get("/blogs", function (req, res, next) {
   blogModule.find({}).exec((err, data) => {
     if (err) throw err;
-    // console.log(data);
     if (req.session.uniqueId) {
       var username = req.session.user.username;
-      // console.log(username);
-      res.render("Home/blogs", { blogs: data, isloggedin: username });
+      res.render("Home/blogs", { blogs: data, isloggedin: username, moment:moment });
     } else {
       res.render("Home/blogs", { blogs: data, isloggedin: "login/register", moment:moment });
     }
