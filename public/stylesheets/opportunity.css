@@ -17,3 +17,17 @@
     margin-top: 25px;
     text-align: justify;
 }
+
+.card-wrapper{
+    box-shadow: 0 0 15px 4px rgba(110, 110, 110, 0.200);
+}
+
+.view-button .applybtn{
+    background-color: #743c5c;
+    color:white;
+}
+
+.view-button .viewallbtn{
+    background-color: #9a468d;
+    color:white;
+}

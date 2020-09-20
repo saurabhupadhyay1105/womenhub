@@ -24,22 +24,31 @@ var upload = multer({
 /* GET home page. */
 router.get("/", function (req, res, next) {
   blogModule.find({}).exec((err, data) => {
-    if(err) throw err;
+    if (err) throw err;
     jobModule.find({}).exec((err, data1) => {
-      if(err) throw err;
-      contestModule.find({}).exec((err, data2) =>{
-        if(err) throw err;
+      if (err) throw err;
+      contestModule.find({}).exec((err, data2) => {
+        if (err) throw err;
         if (req.session.uniqueId) {
           var username = req.session.user.username;
-          res.render("Home/index", { isloggedin: username, blogs: data, jobs: data1, contests: data2 });
+          res.render("Home/index", {
+            isloggedin: username,
+            blogs: data,
+            jobs: data1,
+            contests: data2,
+          });
         } else {
-          res.render("Home/index", { isloggedin: "login/register", blogs: data, jobs: data1, contests: data2 });
+          res.render("Home/index", {
+            isloggedin: "login/register",
+            blogs: data,
+            jobs: data1,
+            contests: data2,
+          });
         }
       });
     });
   });
 });
-
 
 //Get login Page
 router.get("/login", (req, res, next) => {
@@ -171,7 +180,11 @@ router.get("/blogs", function (req, res, next) {
     if (err) throw err;
     if (req.session.uniqueId) {
       var username = req.session.user.username;
-      res.render("Home/blogs", { blogs: data, isloggedin: username, moment:moment });
+      res.render("Home/blogs", {
+        blogs: data,
+        isloggedin: username,
+        moment: moment,
+      });
     } else {
       res.render("Home/blogs", {
         blogs: data,
@@ -267,7 +280,7 @@ router.get("/opportunity/:id", (req, res, next) => {
     var isloggedin = req.session.user.username;
   } else var isloggedin = "login/register";
   var id = req.params.id;
-  var opp = jobModule.findById(id);
+  var opp = jobModule.find({ _id: id });
   opp.exec((err, data) => {
     if (err) throw err;
     res.render("Home/opportunity", {
