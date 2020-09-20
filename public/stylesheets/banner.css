@@ -1,0 +1,116 @@
+
+/* ---- stats.js ---- */
+
+.count-particles{
+  background: #000022;
+  position: absolute;
+  top: 48px;
+  left: 0;
+  width: 80px;
+  color: #13E8E9;
+  font-size: .8em;
+  text-align: left;
+  text-indent: 4px;
+  line-height: 14px;
+  padding-bottom: 2px;
+  font-family: Helvetica, Arial, sans-serif;
+  font-weight: bold;
+}
+
+.js-count-particles{
+  font-size: 1.1em;
+}
+
+#stats,
+.count-particles{
+  -webkit-user-select: none;
+  margin-top: 5px;
+  margin-left: 5px;
+}
+
+#stats{
+  border-radius: 3px 3px 0 0;
+  overflow: hidden;
+}
+
+.count-particles{
+  border-radius: 0 0 3px 3px;
+}
+
+
+/* ---- particles.js container ---- */
+
+#particles-js{
+  width: 100%;
+  height: 100%;
+  background: -webkit-linear-gradient(left, #6a197d, #ffa5b0);
+  background-image: url('');
+  background-size: cover;
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+}
+
+.bnrcontent{
+    padding: 15% 10%;
+
+}
+
+.bnrcontent h1{
+    color: #f5f5f5;
+    font-size: 4em;
+}
+
+.bnrcontent h2{
+    color: #c9c7c7;
+    font-size: 3em;
+}
+
+
+.bannerbtn{
+    color: #fff;
+    background-color: transparent;
+    font-weight: 500;
+    font-size: 1.5em;
+    text-transform: uppercase;
+    letter-spacing:3px;
+    height:50px;
+    width: 100px;
+    border-radius: 5px;
+    border: 3px solid #fff;
+    font-family: Poppins;
+    transition: 0.3s;
+    margin-top: 20px;
+}
+
+.bannerbtn:hover{
+    color: #6a197d;
+    background-color: #fff;
+  }
+
+.bnrimg{
+    max-width: 600px;
+    padding-right: 5%;
+    animation: f2 3s infinite linear;
+}
+
+
+@keyframes f2{
+    30%{
+      transform: translateY(12px) rotate(2deg);
+    }
+    70%{
+      transform: translateY(12px) rotate(-3deg);
+    }
+  }
+  
+
+
+  @media screen and (max-width:1440px){
+    .banner-text{
+      font-size: 4em;
+    }
+  
+  }
+  @media screen and (max-width:768px){
+
+  }
