@@ -44,9 +44,6 @@
                             </nav>
                         </div>
                     </div>
-                    <!-- whatever is written down should be rendered 
-according to the type we have selected u can 
-give it a id or anything i am just making the cards, lets say it is rendered when we have selected "all" -->
 
                     <% if(jobs.length>0){ jobs.forEach(job=>{ %>
                     <div class="card-text">
@@ -54,7 +51,7 @@ give it a id or anything i am just making the cards, lets say it is rendered whe
                             <div class="col-sm-7">
                                 <div class="card opty-cards-proto">
                                     <div class="card-body">
-                                        <div class="card-title">
+                                        <div class="" style="text-transform: capitalize;">
                                             <h4><%= job.title %></h4>
                                         </div>
 
@@ -67,8 +64,7 @@ give it a id or anything i am just making the cards, lets say it is rendered whe
                                         </div>
 
                                         <div class="card-subtitle for-space">
-                                            <span>posted by</span><span> <%= job.username %></span>
-                                            <h6>5 august, 1999</h6>
+                                            <h6 class="text-muted post gapping">posted by <%=job.username %> on <%=moment(job.date).format('DD-MMM-YYYY') %></h6>
                                         </div>
 
                                         <div class="row justify-content-center view-button">

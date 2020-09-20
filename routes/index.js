@@ -197,7 +197,6 @@ router.get("/blogs", function (req, res, next) {
 
 //Get a Blog
 router.get("/blog/:id", (req, res, next) => {
-  var opps = jobModule.find({});
   if (req.session.uniqueId) {
     var isloggedin = req.session.user.username;
   } else var isloggedin = "login/register";
@@ -284,8 +283,6 @@ router.get("/opportunity/:id", (req, res, next) => {
   var opp = jobModule.find({ _id: id });
   opp.exec((err, data) => {
     if (err) throw err;
-    // console.log(data);
-    // res.send(data);
     res.render("Home/opportunity", {
       opportunity: data[0],
       isloggedin: isloggedin,
