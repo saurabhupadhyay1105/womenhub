@@ -289,7 +289,7 @@ router.get("/contests", (req, res, next) => {
     var isloggedin = req.session.user.username;
   } else var isloggedin = "login/register";
   contestModule.find({}).exec((err, data) => {
-    res.render("Home/contests", { contests: data, isloggedin: isloggedin });
+    res.render("Home/contests", { contests: data, isloggedin: isloggedin, moment:moment });
   });
 });
 
@@ -302,7 +302,7 @@ router.get("/contest/:id", (req, res, next) => {
   var cont = contestModule.findById(id);
   cont.exec((err, data) => {
     if (err) throw err;
-    res.render("Home/contest", { contest: data, isloggedin: isloggedin });
+    res.render("Home/contest", { contest: data, isloggedin: isloggedin, moment:moment });
   });
 });
 
