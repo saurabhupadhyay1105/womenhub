@@ -13,8 +13,9 @@ var multer = require("multer");
 var Storage = multer.diskStorage({
   destination: "./public/blogs/",
   filename: (req, file, cb) => {
-    console.log(path.extname(file.originalname));
-    cb(null, file.fieldname + "_" + Date.now + path.extname(file.originalname));
+    var num = Math.floor(Math.random() * 1000000 + 1);
+    // console.log(path.extname(file.originalname));
+    cb(null, file.fieldname + "_" + num + path.extname(file.originalname));
   },
 });
 var upload = multer({
