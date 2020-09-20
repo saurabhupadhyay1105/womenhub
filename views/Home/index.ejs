@@ -22,24 +22,24 @@
       
       <div class="col-lg-4"> 
         <div class="contest-card">
-          <h2><%- jobs[0].title%></h2>
-          <p><%- jobs[0].description%></p>
+          <h2><%- jobs[0].title.slice(0,30)%></h2>
+          <p><%- jobs[0].description.slice(0,200)%></p>
           <p><a class="btn btn-secondary main-button " href="/opportunity/<%- jobs[0]._id%>" role="button">View details &raquo;</a></p>
         </div>
       </div>
 
       <div class="col-lg-4">
         <div class="contest-card">
-          <h2><%- jobs[1].title%></h2>
-          <p><%- jobs[1].description%></p>
+          <h2><%- jobs[1].title.slice(0,30)%></h2>
+          <p><%- jobs[1].description.slice(0,200)%></p>
           <p><a class="btn btn-secondary main-button " href="/opportunity/<%- jobs[1]._id%>" role="button">View details &raquo;</a></p>
         </div>
       </div>
 
       <div class="col-lg-4">
         <div class="contest-card">
-          <h2><%- jobs[2].title%></h2>
-          <p><%- jobs[2].description%></p>
+          <h2><%- jobs[2].title.slice(0,30)%></h2>
+          <p><%- jobs[2].description.slice(0,200)%></p>
           <p><a class="btn btn-secondary main-button " href="/opportunity/<%- jobs[2]._id%>" role="button">View details &raquo;</a></p>
         </div>
       </div>
@@ -62,8 +62,8 @@
         </div>
 
         <div class="col-md-8 order-md-1">
-          <h2 class="featurette-heading"><%- blogs[0].title%></h2>
-          <p class="lead par-oppotunities"><%- blogs[0].body%></p>
+          <h2 class="featurette-heading"><%- blogs[0].title.slice(0,100)%></h2>
+          <p class="lead par-oppotunities"><%- blogs[0].body.slice(0,250)%></p>
           <p><a class="btn btn-secondary main-button" href="/blog/<%= blogs[0]._id%>" role="button">Read More</a></p>
         
         </div>
@@ -77,8 +77,8 @@
         </div>
 
         <div class="col-md-8 order-md-1">
-          <h2 class="featurette-heading"><%- blogs[1].title%></h2>
-          <p class="lead par-oppotunities"><%- blogs[1].body%></p>
+          <h2 class="featurette-heading"><%- blogs[1].title.slice(0,100)%></h2>
+          <p class="lead par-oppotunities"><%- blogs[1].body.slice(0,250)%></p>
           <p><a class="btn btn-secondary main-button" href="/blog/<%= blogs[1]._id%>" role="button">Read More</a></p>
         
         </div>
@@ -92,8 +92,8 @@
         </div>
 
         <div class="col-md-8 order-md-1">
-          <h2 class="featurette-heading"><%- blogs[2].title%></h2>
-          <p class="lead par-oppotunities"><%- blogs[2].body%></p>
+          <h2 class="featurette-heading"><%- blogs[2].title.slice(0,100)%></h2>
+          <p class="lead par-oppotunities"><%- blogs[2].body.slice(0,250)%></p>
           <p><a class="btn btn-secondary main-button" href="/blog/<%= blogs[2]._id%>" role="button">Read More</a></p>
         
         </div>
@@ -110,24 +110,24 @@
       
       <div class="col-lg-4">
         <div class="contest-card">
-          <h2><%- contests[0].title%></h2>
-          <p><%- contests[0].summary%></p>
+          <h2><%- contests[0].title.slice(0,30)%></h2>
+          <p><%- contests[0].summary.slice(0,200)%></p>
           <p><a class="btn btn-secondary main-button" href="/contest/<%- contests[0]._id%>" role="button">View details &raquo;</a></p>
         </div>
       </div>
 
       <div class="col-lg-4">
         <div class="contest-card">
-          <h2><%- contests[1].title%></h2>
-          <p><%- contests[1].summary%></p>
+          <h2><%- contests[1].title.slice(0,30)%></h2>
+          <p><%- contests[1].summary.slice(0,200)%></p>
           <p><a class="btn btn-secondary main-button" href="/contest/<%- contests[1]._id%>" role="button">View details &raquo;</a></p>
         </div>
       </div>
 
       <div class="col-lg-4">
         <div class="contest-card">
-          <h2><%- contests[2].title%></h2>
-          <p><%- contests[2].summary%></p>
+          <h2><%- contests[2].title.slice(0,30)%></h2>
+          <p><%- contests[2].summary.slice(0,200)%></p>
           <p><a class="btn btn-secondary main-button" href="/contest/<%- contests[2]._id%>" role="button">View details &raquo;</a></p>
         </div>
       </div>
