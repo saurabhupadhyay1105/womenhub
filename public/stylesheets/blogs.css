@@ -71,7 +71,17 @@ p {
   text-align: justify;
 }
 
+.main-button{
+  background-color: #6a197d;
+  text-decoration: none;
+  color:white!important;
+}
+
+.main-button:hover{
+  background-color: #995d7f;
+}
+
 @media only screen and (max-width:767px){
   .inspire-heading h1{
-  font-size: 2em;
+  font-size: 2em;}
 }
